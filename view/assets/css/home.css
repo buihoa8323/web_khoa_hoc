@@ -147,7 +147,7 @@
 
 .main__slice .controls .prev:hover,
 .main__slice .controls .next:hover {
-    color: blue;
+    color: #2a2185;
 }
 
 .main__slice .controls .prev {
@@ -171,7 +171,7 @@
     width: 35px;
     height: 35px;
     background-color: var(--white-cl-1);
-    color: blue;
+    color: #2a2185;
     border-radius: 50%;
     text-align: center;
     font-size: 1.6rem;
@@ -180,7 +180,7 @@
 }
 
 .main__slice .indicator div.active {
-    background-color: blue;
+    background-color: #2a2185;
     color: var(--white-cl-1);
     transition: all 0.3s;
 }
@@ -230,7 +230,7 @@
     left: 0;
     height: 1px;
     width: 130px;
-    background-color: blue;
+    background-color: #2a2185;
 }
 
 .sale-heading::before {
@@ -240,7 +240,7 @@
     left: 0;
     height: 1px;
     width: 60px;
-    background-color: blue;
+    background-color: #2a2185;
 }
 
 .sale-description {
@@ -384,7 +384,7 @@
 @media(max-width: 1023px) {
     .header__nav,
     .header.scrolling .header__nav {
-        background-color: blue;
+        background-color: #2a2185;
     }
     .header__nav-item,
     .header.scrolling .header__nav-item {

@@ -153,7 +153,7 @@
 }
 
 .pagination__item.active .pagination__link {
-    background-color: blue;
+    background-color: #2a2185;
     color: var(--white-cl-1);
 }
 
@@ -196,7 +196,7 @@
     left: 0;
     height: 1px;
     width: 130px;
-    background-color: blue;
+    background-color: #2a2185;
 }
 
 .productInfo__name::before {
@@ -206,7 +206,7 @@
     left: 0;
     height: 1px;
     width: 60px;
-    background-color: blue;
+    background-color: #2a2185;
 }
 
 .productInfo__price {
@@ -313,7 +313,7 @@
 }
 
 .productDes a {
-    color: blue;
+    color: #2a2185;
 }
 
 .productDes p img {
@@ -322,9 +322,9 @@
 
 .productDes__title {
     font-size: 2rem;
-    color: var(--black-cl-2);
-    margin-bottom: 20px;
-    margin-top: 12px;
+    color: #2a2185;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .productDes__text {
@@ -339,7 +339,7 @@
 }
 
 .productDes__ratting {
-    border: 2px solid blue;
+    border: 2px solid #2a2185;
     padding: 20px 16px;
 }
 
