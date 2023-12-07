@@ -1,3 +1,56 @@
+.logout-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-left: 10px;
+}
+
+.logout-btn:hover {
+  text-decoration: underline;
+}
+
+.content {
+  margin-top: 80px;
+  /* Adjust this value based on the height of your header */
+  padding: 20px;
+  /* Your additional styles for content */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: roboto;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(1, 1, 100);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.content {
+  margin-top: 80px;
+  /* Adjust this value based on the height of your header */
+  padding: 20px;
+  /* Your additional styles for content */
+}
+
+
+a {
+  text-decoration: none;
+  /* Loại bỏ gạch chân mặc định */
+  color: #fff;
+    /* Màu văn bản */
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 *{
     margin: 0;

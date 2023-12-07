@@ -6,10 +6,16 @@
     <title>Document</title>
     <link rel="stylesheet" href="admin.css/courses.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-...." crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
+  <header class="fixed-header">
+    <a href="admin.home.html" style="color:#fff">QUẢN LÝ KHÓA HỌC </a>
+    <button class="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+  </header>
+  <div class="content">
 <div  >
     <center><h1>Danh sách khóa học</h1></center>
     <div class="search">
@@ -40,9 +46,9 @@
         </thead>
 
   
-        <tr>
+        <tr> 
             <td></td>
-            <td><img src='#' width='100px' height='100px'></td>
+            <td><a href ="chitiet.html"> <img src='#' width='100px' height='100px'> </a></td>
             <td></td>
             <td></td>      
             <td></td>  
@@ -59,6 +65,7 @@
               });
             });
           </script> 
+         
         </tr> 
     </table>  
 </div>
@@ -126,6 +133,7 @@
               
             </div> <!-- Modal content-->
           </div>
+  </div>
 <!-- script cho moval  -->
           <script>
         // lấy phần Modal
