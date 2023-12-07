@@ -1,3 +1,48 @@
+.logout-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-left: 10px;
+}
+
+.logout-btn:hover {
+  text-decoration: underline;
+}
+
+.content {
+  margin-top: 80px;
+  /* Adjust this value based on the height of your header */
+  padding: 20px;
+  /* Your additional styles for content */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.content {
+  margin-top: 80px;
+  /* Adjust this value based on the height of your header */
+  padding: 20px;
+  /* Your additional styles for content */
+}
+
+
 h1 {
     font-size: 2em; /* Kích thước chữ */
     color: #333; /* Màu chữ */

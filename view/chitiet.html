@@ -8,10 +8,17 @@
   <link rel="stylesheet" href="admin.css/admin.them.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.css">
   <script src="https://cdn.jsdelivr.net/npm/simplemde@1.11.2/dist/simplemde.min.js"></script>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-...." crossorigin="anonymous" referrerpolicy="no-referrer" />
+ 
 </head>
 
 <body>
+  <header class="fixed-header">
+    QUẢN LÝ KHÓA HỌC
+    <button class="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
+  </header>
+  <div class="content">
   <div class="tong">
     <div class="tieude">
       <div class="tong">
@@ -44,7 +51,6 @@
           </div>
           <div class="nut">
             <button class="show-modal">Sửa khóa học</button>
-
             <div class="modal hidden">
               <button class="close-modal">&times;</button>
               <h1>Sửa khóa học</h1>
@@ -62,11 +68,11 @@
                       <br><br>
                     </div>
               
-                    <div class="group">
-                      <input id="description-field" class="control-custom" type="text" required="required" />
-                      <span class="bar"></span>
-                      <label for="description-field"></label> <br> <br>
-                    </div>
+                  <div class="group">
+                    <input id="description-field" class="control-custom" type="text" required="required" />
+                    <span class="bar"></span>
+                    <label for="description-field-edit"></label> <br> <br>
+                  </div>
                     <div class="group">
                       <label>Ảnh</label> <br>
                       <input class="control-custom" type="file" required="required" />
@@ -110,8 +116,7 @@
       </div>
       <div class="mucgiua">
         <h3>NỘI DUNG KHÓA HỌC</h3>
-        <button class="show-modal">Thêm bài học</button>
-
+        <button class="show-modal" >Thêm bài học</button>
         <div class="modal hidden">
           <button class="close-modal">&times;</button>
           <h1> Thêm bài học</h1>
@@ -128,11 +133,11 @@
                   <label>Mô tả bài hoc</label>
                   <br><br>
                 </div>
-
+          
                 <div class="group">
                   <input id="description-field" class="control-custom" type="text" required="required" />
                   <span class="bar"></span>
-                  <label for="description-field"></label> <br> <br>
+                  <label for="description-field-add"></label> <br> <br>
                 </div>
                 <div class="group">
                   <input class="control-custom" type="url" required="required" />
@@ -140,11 +145,11 @@
                   <label>Video bài học</label>
                 </div>
                 <div class="group">
-                  <label>Trạng thái bài học </label><br><br><br>
+                  <label>Trạng thái bài học </label><br><br>
                   <button class="toggle-btn">Active</button>
                   <span class="bar"></span>
                 </div>
-
+          
                 <div class="form-button text-center">
                   <button class="btn btn-info" type="submit">Thêm</button>
                   <button class="btn btn-cancel" type="button">Hủy</button>
@@ -155,7 +160,7 @@
 
         </div>
         <div class="overlay hidden"></div>
-
+        
         <script src="script.js"></script>
         <script>
           var simplemde = new SimpleMDE({
@@ -231,6 +236,7 @@
         </div>
       </div>
     </div>
+  </div>
     <script>
       const toggleBtn = document.querySelector('.toggle-btn');
 
@@ -243,12 +249,13 @@
         }
       });
     </script>
-    <script>
+    <!-- <script>
       var simplemde = new SimpleMDE({
         element: document.getElementById("description-field"),
         spellChecker: false
       });
-    </script>
+    </script> -->
+    
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
