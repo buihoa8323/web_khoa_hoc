@@ -1,0 +1,342 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1.2rem;
+    right: 2rem;
+    font-size: 5rem;
+    color: #333;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+p {
+    font-size: 1.8rem;
+}
+
+/* -------------------------- */
+/* CLASSES TO MAKE MODAL WORK */
+.hidden {
+    display: none;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+
+    background-color: white;
+    padding: 6rem;
+    border-radius: 5px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+    z-index: 5;
+}
+
+.form-detail {
+    padding-top: 25px;
+    display: flex;
+    align-items: flex-end;
+    margin: 10px;
+    justify-content: center;
+}
+
+.form-detail .control-custom {
+    font-size: 14px;
+    color: #868686;
+    width: 97%;
+}
+
+.form-detail .group {
+    position: relative;
+}
+
+
+.form-detail input {
+    display: block;
+    padding: 14px 0;
+    border: none;
+    border-bottom: 1px solid #d8d8d8;
+    margin-top: 26px;
+}
+
+.form-detail textarea {
+    display: block;
+    border: none;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.form-detail label {
+    font-size: 14px;
+    color: #868686;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    top: 16px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+}
+
+.form-detail .bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.bar::before,
+.bar::after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #2a2185;
+    ;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.bar::before {
+    left: 50%;
+}
+
+.bar::after {
+    right: 50%;
+}
+
+.form-detail input:focus~label,
+.form-detail input:valid~label,
+.form-detail textarea:focus~label,
+.form-detail textarea:valid~label {
+    top: -16px;
+    color: #2a2185;
+    ;
+}
+
+.form-button {
+    margin-top: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #2a2185;
+    margin-top: 2%;
+
+}
+
+.btn {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #2a2185;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px 24px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    align: right;
+}
+
+.btn:hover {
+    background-color: #2a2185;
+}
+
+.form-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.btn {
+    margin-right: 50px;
+    /* Định dạng nút button */
+}
+
+
+.toggle-btn {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 20px;
+}
+
+.toggle-btn.active {
+    background-color: #e74c3c;
+}
+
+.form-detail {
+    padding-top: 25px;
+    display: flex;
+    align-items: flex-end;
+    margin: 10px;
+    justify-content: center;
+}
+
+.form-detail .control-custom {
+    font-size: 14px;
+    color: #868686;
+    width: 97%;
+}
+
+.form-detail .group {
+    position: relative;
+}
+
+
+.form-detail input {
+    display: block;
+    padding: 14px 0;
+    border: none;
+    border-bottom: 1px solid #d8d8d8;
+    margin-top: 26px;
+}
+
+.form-detail textarea {
+    display: block;
+    border: none;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.form-detail label {
+    font-size: 14px;
+    color: #868686;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    top: 16px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+}
+
+.form-detail .bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.bar::before,
+.bar::after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #2a2185;
+    ;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.bar::before {
+    left: 50%;
+}
+
+.bar::after {
+    right: 50%;
+}
+
+.form-detail input:focus~label,
+.form-detail input:valid~label,
+.form-detail textarea:focus~label,
+.form-detail textarea:valid~label {
+    top: -16px;
+    color: #2a2185;
+    ;
+}
+
+.form-button {
+    margin-top: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #2a2185;
+    margin-top: 2%;
+
+}
+
+.btn {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #2a2185;
+    border: none;
+    color: #ffffff;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px 24px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    align: right;
+}
+
+.btn:hover {
+    background-color: #2a2185;
+}
+
+.form-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.btn {
+    margin-right: 50px;
+    /* Định dạng nút button */
+}
+
+
+.toggle-btn {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 20px;
+}
+
+.toggle-btn.active {
+    background-color: #e74c3c;
+}
