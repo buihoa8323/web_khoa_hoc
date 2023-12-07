@@ -23,7 +23,10 @@ h1 {
 p {
     font-size: 1.8rem;
 }
-
+a {
+    text-decoration: none;
+    /* Loại bỏ gạch chân mặc định */
+}
 /* -------------------------- */
 /* CLASSES TO MAKE MODAL WORK */
 .hidden {

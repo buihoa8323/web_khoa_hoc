@@ -29,7 +29,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #333;
+  background-color: rgb(1, 1, 100);
   color: #fff;
   padding: 10px;
   text-align: center;
@@ -42,6 +42,10 @@ body {
   /* Your additional styles for content */
 }
 
+a {
+  text-decoration: none;
+  /* Loại bỏ gạch chân mặc định */
+}
 
 h1 {
     font-size: 2em; /* Kích thước chữ */
