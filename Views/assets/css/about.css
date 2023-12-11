@@ -1,0 +1,48 @@
+.main {
+    padding: 30px 0;
+    background-color: #f2f2f2;
+}
+
+.title_about{
+    font-size: 2rem;
+    font-weight: 500;
+    color: #2a2185;
+    line-height: 2rem;
+    height: calc(30px);
+
+}
+
+.content_about{
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--black-cl-1);
+    line-height: 2rem; 
+    margin-bottom: 20px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .video_about{
+    margin-bottom: 20px;
+  }
+
+  .image-wrapper {
+    text-align: center;
+    width: 200px; /* Kích thước khung tròn */
+    height: 200px; /* Kích thước khung tròn */
+  }
+  
+  .image-wrapper img {
+    border: 2px solid var(--black-cl-2); /* Đổi màu và độ rộng của viền tại đây */
+    border-radius: 50%;
+    width: 180px; /* Kích thước ảnh */
+    height: 180px; /* Kích thước ảnh */
+  }
+
+.founder {
+    margin-top: 15px;
+}

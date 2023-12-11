@@ -1,0 +1,268 @@
+.logout-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px 10px;
+  margin-left: 10px;
+}
+
+.logout-btn:hover {
+  text-decoration: underline;
+}
+
+.content {
+  margin-top: 80px;
+  /* Adjust this value based on the height of your header */
+  padding: 20px;
+  /* Your additional styles for content */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(1, 1, 100);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.content {
+  margin-top: 80px;
+  /* Adjust this value based on the height of your header */
+  padding: 20px;
+  /* Your additional styles for content */
+}
+
+h1 {
+  font-size: 2em;
+  /* Kích thước chữ */
+  color: #333;
+  /* Màu chữ */
+  font-weight: bold;
+  /* Độ đậm của chữ */
+  margin-bottom: 10px;
+  /* Khoảng cách phía dưới */
+  text-align: center;
+  /* Căn giữa văn bản */
+}
+
+.muctren {
+  display: flex;
+  /* Thêm dòng này để sử dụng flexbox */
+  align-items: center;
+  /* Canh giữa các phần tử con theo chiều dọc */
+}
+
+.anh {
+  margin-right: 20px;
+  /* Tăng khoảng cách giữa phần "anh" và "thongtinkhoahoc" nếu cần thiết */
+}
+
+.anh img {
+  height: 250px;
+  border: 2px solid #ddd;
+  /* Màu và độ dày của viền */
+  border-radius: 8px;
+  /* Độ cong của góc viền */
+}
+
+.thongtinkhoahoc {
+  flex: 1;
+  /* Phần "thongtinkhoahoc" sẽ chiếm phần còn lại của không gian trong phần "muctren" */
+}
+
+.background {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 30px;
+  transition: 0.25s;
+  border: 2px solid #eeeeee;
+}
+
+.mask {
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  box-shadow: 1px 1px 3px silver;
+  border-radius: 50%;
+  left: 3px;
+  /* Thay đổi giá trị left */
+  top: 3px;
+  /* Thay đổi giá trị top */
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.container1>input[type=checkbox]:checked+.background {
+  background-color: #4cd964;
+  border-color: #4cd964;
+}
+
+.container1>input[type=checkbox]:checked~.mask {
+  left: 26px;
+  /* Thay đổi giá trị left */
+}
+
+.container1>input[type=checkbox] {
+  display: none;
+}
+
+.container1 {
+  display: block;
+  position: relative;
+  width: 50px;
+  height: 30px;
+  /* margin: 50px auto; */
+  box-sizing: border-box;
+}
+
+.nut {
+  display: flex;
+  justify-content: space-between;
+  /* Căn trái và phải */
+  align-items: center;
+  /* Căn giữa theo chiều dọc */
+}
+
+/* Các kiểu CSS khác để tùy chỉnh button và label */
+#suakhoahoc {
+  padding: 10px;
+}
+
+.container1 {
+  display: inline-block;
+  /* Để label không chiếm toàn bộ chiều rộng */
+}
+
+/* Thêm các kiểu CSS cho label và các phần tử bên trong nếu cần */
+.mucgiua {
+  display: flex;
+  justify-content: space-between;
+  /* Căn trái và phải */
+  align-items: center;
+  /* Căn giữa theo chiều dọc */
+}
+
+#thembaihoc {
+  padding: 10px;
+}
+
+body {
+  margin-left: 5%;
+  margin-right: 4%;
+  padding: auto;
+}
+
+.nut {
+  margin-top: 20px;
+  /* Khoảng cách từ top của trang đến div có class "nut" */
+  margin-bottom: 20px;
+  /* Khoảng cách từ bottom của trang đến div có class "nut" */
+}
+
+.mucgiua {
+  margin-top: 20px;
+  /* Khoảng cách từ top của trang đến div có class "mucgiua" */
+  margin-bottom: 20px;
+  /* Khoảng cách từ bottom của trang đến div có class "mucgiua" */
+}
+
+#thembaihoc {
+  margin-top: 20px;
+  /* Khoảng cách từ top của trang đến div có id "thembaihoc" */
+  margin-bottom: 20px;
+  /* Khoảng cách từ bottom của trang đến div có id "thembaihoc" */
+}
+
+.sua-bai-hoc {
+  padding: 8px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.xep-xuong {
+  cursor: pointer;
+}
+
+.thong-tin-chi-tiet {
+  display: none;
+  /* Ẩn thông tin chi tiết mặc định */
+}
+
+.thong-tin-chi-tiet p {
+  margin: 5px 0;
+}
+
+/* Khi nhấn vào dấu xổ xuống, hiển thị thông tin chi tiết */
+.chi-tiet-bai-hoc:hover .thong-tin-chi-tiet {
+  display: block;
+}
+
+.chi-tiet-bai-hoc {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  margin: 20px;
+}
+
+.nut-quay-lai {
+  margin-top: 20px;
+  /* điều chỉnh khoảng cách từ top nếu cần thiết */
+}
+
+#quay-lai {
+  background-color: #3498db;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+#quay-lai img {
+  width: 20px;
+  /* điều chỉnh kích thước hình đại diện */
+  height: 20px;
+  margin-right: 5px;
+  /* khoảng cách giữa hình và văn bản nút */
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* Tỷ lệ khung hình 16:9 */
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

@@ -10,7 +10,12 @@ class UserModel {
     private $created_at;
     private $updated_at;
 
-    public function __construct($use_id, $user_name, $user_pass, $user_dob, $user_address, $user_mail, $user_role, $created_at, $updated_at) {
+    public function __construct()
+    {
+        return $this;
+    }
+
+    public function UserModel($use_id, $user_name, $user_pass, $user_dob, $user_address, $user_mail, $user_role, $created_at, $updated_at) {
         $this->use_id = $use_id;
         $this->user_name = $user_name;
         $this->user_pass = $user_pass;
@@ -20,6 +25,7 @@ class UserModel {
         $this->user_role = $user_role;
         $this->created_at = $created_at;
         $this->updated_at = $updated_at;
+        return $this;
     }
 
     public function getUseId() {
