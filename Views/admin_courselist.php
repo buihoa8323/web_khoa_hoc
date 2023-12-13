@@ -47,41 +47,7 @@
                     </a>
                 </li>
 
-                <!-- <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="chatbubble-outline"></ion-icon>
-                        </span>
-                        <span class="title">Messages</span>
-                    </a>
-                </li> -->
-
-                <!-- <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="help-outline"></ion-icon>
-                        </span>
-                        <span class="title">Help</span>
-                    </a>
-                </li> -->
-
-                <!-- <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="settings-outline"></ion-icon>
-                        </span>
-                        <span class="title">Settings</span>
-                    </a>
-                </li> -->
-
-                <!-- <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="lock-closed-outline"></ion-icon>
-                        </span>
-                        <span class="title">Password</span>
-                    </a>
-                </li> -->
+               
 
                 <li>
                     <a href="#" class="signout">
@@ -162,21 +128,7 @@
                                     </div>
                                 </form>
                             </div>
-                            <!-- <script>
-                                var selectSubject = document.getElementById("subject");
-                                selectSubject.addEventListener("change", function() {
-                                    var subject_id = selectSubject.value;
-                                    var xhr = new XMLHttpRequest();
-                                    xhr.open("POST", "/index.php?controller=adminCourseList", true);
-                                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                                    xhr.onreadystatechange = function() {
-                                        if (xhr.readyState === 4 && xhr.status === 200) {
-                                            // Handle the response from the server
-                                        }
-                                    };
-                                    xhr.send("subject_id=" + encodeURIComponent(subject_id) + "&method=" + encodeURIComponent('subject_filter'));
-                                });
-                            </script> -->
+                            
                             <div class="col-md-3">
                                 <form action="/index.php?controller=adminCourseList" method="post" class="form-group" class="form-group">
                                     <input hidden="true" type="text" name="method" value="grade_filter" class="form-control" id="grade">
