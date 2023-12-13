@@ -11,7 +11,7 @@ class DB {
     //config
     $username = "root";
     $password = ""; //update this when run db on other server
-    $dbname = "webkhoahoc";
+    $dbname = "db";
     $dbhost = "127.0.0.1";
 
     try {
