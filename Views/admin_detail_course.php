@@ -15,7 +15,9 @@
   if ($raw_data instanceof CourseModel) $course = $raw_data;
   ?>
   <header class="fixed-header">
-    <a href="admin_home.html">QUẢN LÝ KHÓA HỌC </a>
+    <a style="color: white; text-decoration: none;" href="/index?controller=adminCourseList">
+      <h4>QUẢN LÝ KHÓA HỌC </h4>
+    </a>
     <button class="logout-btn"><i class="fas fa-sign-out-alt"></i></button>
   </header>
   <div class="content">
@@ -69,7 +71,7 @@
                             </div>
                             <div class='form-check form-switch'>
                               <label for="name">Trạng thái</label>
-                              <input class='form-check-input' name="c_status" type='checkbox' role='switch' id='flexSwitchCheckChecked' <?php echo $course->getCousesStatus() ? ' checked' : '' ;?> >
+                              <input class='form-check-input' name="c_status" type='checkbox' role='switch' id='flexSwitchCheckChecked' <?php echo $course->getCousesStatus() ? ' checked' : ''; ?>>
                             </div>
                             <div class="form-group">
                               <label for="price">Mã giáo viên:</label>
@@ -162,50 +164,70 @@
         </div>
         <div class="mucgiua">
           <h3>NỘI DUNG KHÓA HỌC</h3>
-          <button class="btn btn-outline-primary show-modal">Thêm bài học</button>
-          <div class="modal hidden">
-            <button class="close-modal">&times;</button>
-            <h1> Thêm bài học</h1>
-            <form>
-              <div class="form-detail">
-                <div class="form-info col-md-6 col-xs-12">
-                  <div class="group">
-                    <input class="control-custom" type="text" required="required" />
-                    <span class="bar"></span>
-                    <label>Tên bài học</label>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">Thêm bài học</button>
+          <div class="modal fade modal-xl" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form action="/index.php?controller=adminCourseDetail" method="POST" enctype="multipart/form-data">
+                  <input hidden="true" type="text" name="method" value="create_lesson" class="form-control" id="method">
+                  <input hidden="true" type="text" name="course_id" value="<?php echo $course->getCourseId() ?>" class="form-control" id="grade">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Sửa bài học</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
-                  <div class="group">
-                    <span class="bar"></span>
-                    <label>Mô tả bài hoc</label>
-                    <br><br>
-                  </div>
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group mt-3">
+                          <label for="name">Tên bài học: </label>
+                          <input type="text" class="form-control" id="l_name" name="l_name">
+                        </div>
 
-                  <div class="group">
-                    <input id="description-field" class="control-custom" type="text" required="required" />
-                    <span class="bar"></span>
-                    <label for="description-field-add"></label> <br> <br>
-                  </div>
-                  <div class="group">
-                    <input class="control-custom" type="url" required="required" />
-                    <span class="bar"></span>
-                    <label>Video bài học</label>
-                  </div>
-                  <div class="group">
-                    <label>Trạng thái bài học </label><br><br>
-                    <button class="toggle-btn">Active</button>
-                    <span class="bar"></span>
-                  </div>
+                        <!-- hết lựa chọn cho grade -->
+                        <div class="form-group mt-3">
+                          <label for="name">Video(embed link)</label>
+                          <input type="text" class="form-control" id="l_video" name="l_video">
+                          <!-- <input type="text" class="form-control" id="c_image" name="c_image" required> -->
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="qty">Mô tả:</label>
+                          <!-- Create the editor container -->
+                          <div id="editor2" style="height: 500px;">
+                            <p>Hello World!</p>
+                            <p>Some initial <strong>bold</strong> text</p>
+                            <p><br></p>
+                          </div>
+                          <input type="text" class="form-control" id="l_desc" name="l_desc">
 
-                  <div class="form-button text-center">
-                    <button class="btn btn-info" type="submit">Thêm</button>
-                    <button class="btn btn-cancel" type="button">Hủy</button>
+                          <!-- Initialize Quill editor -->
+                          <script>
+                            const quill2 = new Quill("#editor2", {
+                              modules: {
+                                toolbar: {
+                                  container: [
+                                    ["bold", "italic", "underline", "strike", "color"],
+                                    ["link", "image", "video"],
+                                  ]
+                                },
+                              },
+                              theme: "snow",
+                            });
+                          </script>
+                          <!-- <input type="text" class="form-control" id="c_desc" name="c_desc" required> -->
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                  </div>
+                </form>
               </div>
-            </form>
-
+            </div>
           </div>
-          <div class="overlay hidden"></div>
 
           <script src="script.js"></script>
           <script>
@@ -217,69 +239,54 @@
           <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
           <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         </div>
-        <div class="noidungkhoahoc">
-          <div class="chi-tiet-bai-hoc">
-            <div class="header">
-              <h2><a href="admin_detail_lesson.html">Tên Bài Học</a></h2>
-              <button class="sua-bai-hoc">Sửa Bài Học</button>
-              <div class="xep-xuong"></div>
-              <div><label class="container1">
-                  <input type="checkbox">
-                  <span class="background"></span>
-                  <span class="mask"></span>
-                </label>
-              </div>
-            </div>
-            <div class="thong-tin-chi-tiet">
-              <!-- Các thông tin cơ bản ở đây -->
-              <p><strong>Giáo viên:</strong> Nguyễn Văn A</p>
-              <p><strong>Ngày bắt đầu:</strong> 01/01/2023</p>
-              <p><strong>Thời lượng:</strong> 4 tuần</p>
-              <p><strong>Mô tả:</strong> Đây là một bài học rất thú vị với nhiều nội dung hấp dẫn.</p>
+        <!-- Tab content -->
+        <div class="tab-content ">
+          <div class="tab-pane active ">
+            <div class="productDes ">
+              <table class="table table-bordered">
+                <thead class="table-dark">
+                  <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Tên bài học</th>
+                    <th scope="col">Mô tả bài học</th>
+                    <th scope="col">Video bài học</th>
+                    <th scope="col">Hành động</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  foreach ($data["lesson_list"] as $lesson) {
+                    if ($lesson instanceof LessonModel) {
+                      echo
+                      '<tr>
+                        <td>1</td>  
+                        <td><h3 class="productDes__title">' . $lesson->getLessonName() . '</h3></td>
+                        <td>
+                          <p id="description-course1">&nbsp' . $lesson->getLessonDes() . '</p>
+                        </td>
+                        <td>
+                          <div>
+                              <!-- Embed YouTube video or other video source here -->
+                              <iframe width="400" height="250" src="' . $lesson->getLessonVideo() . '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                          </div>
+                        </td>
+                        <td>
+                          <a href="/index?controller=adminLessonDetail&lesson_id=' . $lesson->getLessonId() . '" class="btn btn-primary">View<a/>
+                          <form action="/index.php?" method="get">
+                          <input hidden="true" type="text" name="controller" value="adminCourseDetail" class="form-control">
+                          <input hidden="true" type="text" name="action" value="delete" class="form-control">
+                          <input hidden="true" type="text" name="lesson_id" value="' . $lesson->getLessonId() . '" class="form-control">
+                          <button class="btn btn-danger" type="submit" style="height:40px" onclick="return confirm(\'Are you sure you want to delete this lesson?\');">Delete</button>
+                          </td>
+                    </tr>';
+                    }
+                  }
+                  ?>
+                </tbody>
+              </table>
             </div>
           </div>
 
-          <div class="chi-tiet-bai-hoc">
-            <div class="header">
-              <h2><a href="admin_detail_lesson.html">Tên Bài Học</a></h2>
-              <button class="sua-bai-hoc">Sửa Bài Học</button>
-              <div class="xep-xuong"></div>
-              <div><label class="container1">
-                  <input type="checkbox">
-                  <span class="background"></span>
-                  <span class="mask"></span>
-                </label>
-              </div>
-            </div>
-            <div class="thong-tin-chi-tiet">
-              <!-- Các thông tin cơ bản ở đây -->
-              <p><strong>Giáo viên:</strong> Nguyễn Văn A</p>
-              <p><strong>Ngày bắt đầu:</strong> 01/01/2023</p>
-              <p><strong>Thời lượng:</strong> 4 tuần</p>
-              <p><strong>Mô tả:</strong> Đây là một bài học rất thú vị với nhiều nội dung hấp dẫn.</p>
-            </div>
-          </div>
-
-          <div class="chi-tiet-bai-hoc">
-            <div class="header">
-              <h2><a href="admin_detail_lesson.html">Tên Bài Học</a></h2>
-              <button class="sua-bai-hoc">Sửa Bài Học</button>
-              <div class="xep-xuong"></div>
-              <div><label class="container1">
-                  <input type="checkbox">
-                  <span class="background"></span>
-                  <span class="mask"></span>
-                </label>
-              </div>
-            </div>
-            <div class="thong-tin-chi-tiet">
-              <!-- Các thông tin cơ bản ở đây -->
-              <p><strong>Giáo viên:</strong> Nguyễn Văn A</p>
-              <p><strong>Ngày bắt đầu:</strong> 01/01/2023</p>
-              <p><strong>Thời lượng:</strong> 4 tuần</p>
-              <p><strong>Mô tả:</strong> Đây là một bài học rất thú vị với nhiều nội dung hấp dẫn.</p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
