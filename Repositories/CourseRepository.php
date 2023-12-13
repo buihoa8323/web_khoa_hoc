@@ -107,6 +107,10 @@ class CourseRepository
   //update existed course to db
   public function update($course_id, $course_name, $teacher_id, $course_price,$course_status, $course_des, $subject_id, $course_grade, $course_image)
   {
+    $updateImage = false;
+    if(!$course_image == ''){
+      $updateImage= true;
+    }
     // Define the SQL statement for updating data
     $sql = "UPDATE courses SET 
     course_name = :course_name, 
@@ -114,10 +118,22 @@ class CourseRepository
     course_des = :course_des, 
     subject_id = :subject_id, 
     couses_grade = :course_grade, 
-    course_image = :course_image, 
     teacher_id = :teacher_id,
     couses_status= :course_status,
     update_at = :update_at WHERE course_id = :course_id";
+
+    if($updateImage){
+      $sql = "UPDATE courses SET 
+      course_name = :course_name, 
+      course_price = :course_price, 
+      course_des = :course_des, 
+      subject_id = :subject_id, 
+      couses_grade = :course_grade, 
+      course_image = :course_image, 
+      teacher_id = :teacher_id,
+      couses_status= :course_status,
+      update_at = :update_at WHERE course_id = :course_id";
+    }
 
     // Prepare the statement and get the PDOStatement object
     $stmt = $this->db->connnection->prepare($sql);
@@ -128,7 +144,9 @@ class CourseRepository
     $stmt->bindParam(':subject_id', $subject_id, PDO::PARAM_STR);
     $stmt->bindParam(':teacher_id', $teacher_id, PDO::PARAM_INT);
     $stmt->bindParam(':course_name', $course_name, PDO::PARAM_STR);
-    $stmt->bindParam(':course_image', $course_image, PDO::PARAM_STR);
+    if($updateImage){
+      $stmt->bindParam(':course_image', $course_image, PDO::PARAM_STR);
+    }
     $stmt->bindParam(':course_price', $course_price, PDO::PARAM_STR);
     $stmt->bindParam(':course_status', $course_status, PDO::PARAM_BOOL);
     $stmt->bindParam(':course_des', $course_des, PDO::PARAM_STR);
