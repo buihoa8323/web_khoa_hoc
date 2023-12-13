@@ -14,166 +14,30 @@
     <!-- Icon fontanwesome -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <!-- Reset css & grid sytem -->
-    <link rel="stylesheet" href="./assets/css/library.css">
+    <link rel="stylesheet" href="Views/assets/css/library.css">
     <!-- Owl Slider css -->
-    <link rel="stylesheet" href="assets/owlCarousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/owlCarousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="Views/assets/owlCarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="Views/assets/owlCarousel/assets/owl.theme.default.min.css">
     <!-- Layout -->
-    <link rel="stylesheet" href="./assets/css/common.css">
+    <link rel="stylesheet" href="Views/assets/css/common.css">
     <!-- index -->
-    <link rel="stylesheet" type="text/css" href="./assets/css/product.css">
+    <link rel="stylesheet" type="text/css" href="Views/assets/css/product.css">
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Owl caroucel Js-->
-    <script src="assets/owlCarousel/owl.carousel.min.js"></script>
+    <script src="Views/assets/owlCarousel/owl.carousel.min.js"></script>
 
-    <script src="assets/js/product.js"></script>
+    <script src="Views/assets/js/product.js"></script>
 
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
 </head>
 
 <body>
-    <div class="header scrolling" id="myHeader">
-        <div class="grid wide">
-            <div class="header__top">
-                <div class="navbar-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <a href="user_homepage.html" class="header__logo">
-                    <img src="./assets/logo.png" alt="">
-                </a>
-                <div class="header__search">
-                    <div class="header__search-wrap">
-                        <input type="text" class="header__search-input" placeholder="Tìm kiếm">
-                        <a class="header__search-icon" href="#">
-                            <i class="fas fa-search"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="header__account">
-                    <a href="login.html" class="header__account-login">Đăng Nhập</a>
-                    <a href="login.html" class="header__account-register">Đăng Kí</a>
-                </div>
-                <!-- Cart -->
-               
-            </div>
-        </div>
-        <!-- Menu -->
-        <div class="header__nav">
-            <ul class="header__nav-list">
-                <li class="header__nav-item nav__search">
-                    <div class="nav__search-wrap">
-                        <input class="nav__search-input" type="text" name="" id="" placeholder="Tìm sản phẩm...">
-                    </div>
-                    <div class="nav__search-btn">
-                        <i class="fas fa-search"></i>
-                    </div>
-                </li>
-                <li class="header__nav-item authen-form">
-                    <a href="#" class="header__nav-link">Tài Khoản</a>
-                    <ul class="sub-nav">
-                        <li class="sub-nav__item">
-                            <a href="login.html" class="sub-nav__link">Đăng Nhập</a>
-                        </li>
-                        <li class="sub-nav__item">
-                            <a href="login.html" class="sub-nav__link">Đăng Kí</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="header__nav-item index">
-                    <a href="user_homepage.html" class="header__nav-link">Trang chủ</a>
-                </li>
-                <li class="header__nav-item">
-                    <a href="user_about.html" class="header__nav-link">Giới Thiệu</a>
-                </li>
-                <li class="header__nav-item">
-                    <a href="user_listProduct.html" class="header__nav-link">Khóa học</a>
-                    <div class="sub-nav-wrap grid wide">
-                        <ul class="sub-nav">
-                            <li class="sub-nav__item">
-                                <a href="" class="sub-nav__link heading">Lớp</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Lớp 10</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Lớp 11</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Lớp 12</a>
-                            </li>
-                           
-                        </ul>
-                        <ul class="sub-nav">
-                            <li class="sub-nav__item">
-                                <a href="" class="sub-nav__link heading">Môn học</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Toán học</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Ngữ Văn</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Tiếng Anh</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Vật Lý</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Hóa Học</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Sinh Học</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Lịch Sử</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Địa Lý</a>
-                            </li>
-                        </ul>
-                        <ul class="sub-nav">
-                            <li class="sub-nav__item">
-                                <a href="" class="sub-nav__link heading">Giáo Viên</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Thầy Lê Văn Tuấn</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Cô Lệ Quyên</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Cô Trang Anh</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Thầy Lại Đắc Hợp</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Thầy Đặng Duy Hữu</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Thầy Phan Khắc Nghệ</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Thầy Bùi Hữu Bến</a>
-                            </li>
-                            <li class="sub-nav__item">
-                                <a href="user_listFilter.html" class="sub-nav__link">Cô Hồng Thúy</a>
-                            </li>
-                        </ul>
-                     
-                    </div>
-                </li>
-               
-                <li class="header__nav-item">
-                    <a href="user_contact.html" class="header__nav-link">Liên Hệ</a>
-                </li>
-            </ul>
-        </div>
-    </div>
+    <?php
+    require('header.php');
+    $raw_data = $data["course"];
+    if ($raw_data instanceof CourseModel) $course = $raw_data;
+    ?>
     <div class="main">
         <div class="grid wide">
             <div class="productInfo">
@@ -181,12 +45,12 @@
                     <div class="col l-5 m-12 s-12">
                         <div class="owl-carousel owl-theme" id="sync1">
                             <a href="#" class="product">
-                                <div class="product__avt" style="background-image: url(assets/img/product/product1.jpg)">
+                                <div class="product__avt" style='background-image: url(" <?php echo $course->getCourseImage() ?> ")'>
                                 </div>
                             </a>
-                           
+
                         </div>
-                       
+
 
                     </div>
                     <div class="col l-7 m-12s s-12 pl">
@@ -202,13 +66,13 @@
                             </div>
                         </div>
                         <h3 class="productInfo__name">
-                            Đại Số 10
+                            <?php echo $course->getCourseName() ?>
                         </h3>
                         <div class="productInfo__price">
-                            300.000 <span class="priceInfo__unit">đ</span>
+                            <?php echo $course->getCoursePrice() ?> <span class="priceInfo__unit">đ</span>
                         </div>
                         <div class="productInfo__description">
-                            <span> Khóa học Đại số 10 </span> cung cấp kiến thức cơ bản về môn đại số lớp 10. Truyền đạt những kiến thức được chắt lọc và có các bài tập kèm theo giúp cho học viên tiếp thu dễ dàng
+                            <span> <?php echo $course->getCourseDes() ?> </span>
                         </div>
 
                         <!-- <div class="productInfo__addToCart">
@@ -217,28 +81,28 @@
                         </div> -->
                         <div class="productIndfo__policy ">
                             <div class="policy bg-1 ">
-                                <img src="./assets/img/policy/policy1.png " class="productIndfo__policy-img "></img>
+                                <img src="Views/assets/img/policy/policy1.png " class="productIndfo__policy-img "></img>
                                 <div class="productIndfo__policy-info ">
                                     <h3 class="productIndfo__policy-title ">Tiết Kiệm Thời Gian</h3>
                                     <p class="productIndfo__policy-description ">Học nhanh kiến thức</p>
                                 </div>
                             </div>
                             <div class="policy bg-2 ">
-                                <img src="./assets/img/policy/policy2.png " class="productIndfo__policy-img "></img>
+                                <img src="Views/assets/img/policy/policy2.png " class="productIndfo__policy-img "></img>
                                 <div class="productIndfo__policy-info ">
                                     <h3 class="productIndfo__policy-title ">Chi phí hợp lý</h3>
                                     <p class="productIndfo__policy-description ">Nhiều ưu đãi</p>
                                 </div>
                             </div>
                             <div class="policy bg-1 ">
-                                <img src="./assets/img/policy/policy3.png " class="productIndfo__policy-img "></img>
+                                <img src="./Views/assets/img/policy/policy3.png " class="productIndfo__policy-img "></img>
                                 <div class="productIndfo__policy-info ">
                                     <h3 class="productIndfo__policy-title ">Khóa học hàng đầu</h3>
                                     <p class="productIndfo__policy-description ">Cam kết chất lượng</p>
                                 </div>
                             </div>
                             <div class="policy bg-2 ">
-                                <img src="./assets/img/policy/policy4.png " class="productIndfo__policy-img "></img>
+                                <img src="Views/assets/img/policy/policy4.png " class="productIndfo__policy-img "></img>
                                 <div class="productIndfo__policy-info ">
                                     <h3 class="productIndfo__policy-title ">Tư vấn 24/24</h3>
                                     <p class="productIndfo__policy-description ">Giải đáp mọi thắc mắc</p>
@@ -246,10 +110,8 @@
                             </div>
                         </div>
                         <div class="productIndfo__category ">
-                            <p class="productIndfo__category-text"> Lớp : <a href="# " class="productIndfo__category-link "> Lớp 10</a></p>
+                            <p class="productIndfo__category-text"> Lớp : <a href="# " class="productIndfo__category-link "> Lớp <?php echo $course->getCousesGrade() ?></a></p>
                             <!-- <p class="productIndfo__category-text"> Số lượng đã bán : 322</p> -->
-                           
-
                         </div>
                     </div>
                 </div>
@@ -260,43 +122,42 @@
                         <!-- Tab items -->
                         <div class="tabs ">
                             <div class="tab-item active ">
-                                Danh sách bài học 
+                                Danh sách bài học
                             </div>
-                            
+
                             <div class="line "></div>
                         </div>
                         <!-- Tab content -->
                         <div class="tab-content ">
                             <div class="tab-pane active ">
                                 <div class="productDes ">
-                                    
-                                    <div class="course-container" onclick="toggleContent('course1')">
-                                        <h3 class="productDes__title">Chương 1 - Bài 1 - Mệnh đề - Tiết 1</h3>
-                                        <div id="video-course1" class="video-container">
-                                            <!-- Embed YouTube video or other video source here -->
-                                            <iframe width="1120" height="630" src="https://www.youtube.com/embed/4dUuuV5yFvM?si=agy9ZqlJHHbLU9IZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                        </div>
-                                        <p id="description-course1" style="display: none;">Toán học lớp 10 - Kết nối tri thức - Chương 1 - Bài 1 - Mệnh đề - Tiết 1</p>
-                                    </div>
-                                    
-                                    <div class="course-container" onclick="toggleContent('course2')">
-                                        <h3 class="productDes__title">Chương 1 - Bài 1 - Mệnh đề - Tiết 2</h3>
-                                        <div id="video-course2" class="video-container">
-                                            <!-- Embed YouTube video or other video source here -->
-                                            <iframe width="1120" height="630" src="https://www.youtube.com/embed/-BkRx0gm23o?si=wFjTCNKNOXsDzUR_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                        </div>
-                                        <p id="description-course2" style="display: none;">Toán học lớp 10 - Kết nối tri thức - Chương 1 - Bài 1 - Mệnh đề - Tiết 2</p>
-                                    </div>
 
-                                    
+                                    <?php
+                                    foreach ($data["lesson_list"] as $lesson) {
+                                        if ($lesson instanceof LessonModel) {
+                                            echo
+                                            '<div class="course-container" onclick="toggleContent(\'course1'. $lesson->getLessonId() .'\')">
+                                                <h3 class="productDes__title">'. $lesson->getLessonName() .'</h3>
+                                                <div style="display: flex; flex-direction: row">
+                                                    <div>
+                                                        <!-- Embed YouTube video or other video source here -->
+                                                        <iframe width="400" height="250" src="'. $lesson->getLessonVideo() .'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                                    </div>
+                                                    <p id="description-course1">&nbsp'. $lesson->getLessonDes() .'</p>
+                                                </div>
+                                            </div>';
+                                        }
+                                    }
+                                    ?>
+
                                 </div>
                             </div>
-                          
+
                         </div>
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
     <div class="footer">
@@ -304,7 +165,7 @@
             <div class="row">
                 <div class="col l-3 m-6 s-12">
                     <a href="user_homepage.html" class="header__logo">
-                        <img src="./assets/logoamban.png" alt="">
+                        <img src="Views/assets/logoamban.png" alt="">
                     </a>
                     <h3 class="footer__slogan">Five Study - Nâng tầm tri thức</h3>
                 </div>
@@ -320,20 +181,20 @@
                         <li class="footer__item">
                             <a href="user_listProduct.html" class="footer__link">Khóa học</a>
                         </li>
-                       
+
                         <li class="footer__item">
                             <a href="user_contact.html" class="footer__link">Liên hệ</a>
                         </li>
                     </ul>
                 </div>
-              
+
                 <div class="col l-3 m-6 s-12">
                     <h3 class="footer__title">Liên hệ</h3>
                     <ul class="footer__list">
                         <li class="footer__item">
                             <span class="footer__text">
-                                    <i class="fas fa-map-marked-alt"></i> 79 Hồ Tùng Mậu, Cầu Giấy, Hà Nội
-                                </span>
+                                <i class="fas fa-map-marked-alt"></i> 79 Hồ Tùng Mậu, Cầu Giấy, Hà Nội
+                            </span>
                         </li>
                         <li class="footer__item">
                             <a href="#" class="footer__link">
@@ -349,11 +210,11 @@
                             <div class="social-group">
                                 <a href="https://www.facebook.com/thuongmaiuniversity" class="social-item"><i class="fab fa-facebook-f"></i>
                                 </a>
-                            <a href="https://www.instagram.com/thuongmaiuniversity/" class="social-item"><i class="fab fa-instagram"></i>
+                                <a href="https://www.instagram.com/thuongmaiuniversity/" class="social-item"><i class="fab fa-instagram"></i>
                                 </a>
-                            <a href="https://twitter.com/ThuongmaiU" class="social-item"><i class="fab fa-twitter"></i>
+                                <a href="https://twitter.com/ThuongmaiU" class="social-item"><i class="fab fa-twitter"></i>
                                 </a>
-                            <a href="https://www.youtube.com/@ThuongmaiUniversityOfficial" class="social-item"><i class="fab fa-youtube"></i>  
+                                <a href="https://www.youtube.com/@ThuongmaiUniversityOfficial" class="social-item"><i class="fab fa-youtube"></i>
                                 </a>
                             </div>
                         </li>
@@ -365,7 +226,7 @@
                         <li class="footer__item">
                             <span class="footer__text">Đăng ký để nhận được được thông tin ưu đãi mới nhất từ chúng tôi.</span>
                         </li>
-                      
+
                     </ul>
                 </div>
             </div>
@@ -374,7 +235,7 @@
             <span class="footer__text"> &copy Bản quyền thuộc về <a class="footer__link" href="#"> Nhóm 5</a></span>
         </div>
     </div>
-   
+
     <!-- Messenger Plugin chat Code -->
     <div id="fb-root"></div>
 
@@ -440,7 +301,7 @@
                 if (current < 0) {
                     current = count;
                 }
-                if (current > count)  {
+                if (current > count) {
                     current = 0;
                 }
 
@@ -510,7 +371,7 @@
         }
     </script>
 
-    
+
 </body>
 
 </html>

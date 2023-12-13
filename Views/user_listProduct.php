@@ -79,7 +79,7 @@
                                                             <div class="price__new">'.$course->getCoursePrice().' <span class="price__unit">đ</span></div>
                                                         </div>
                                                     </div>
-                                                    <a href="/Views/user_product.html" class="viewDetail">Xem chi tiết</a>
+                                                    <a href="/index?controller=courseDetail&course_id='.$course->getCourseId().'" class="viewDetail">Xem chi tiết</a>
                                                 </div>
                                             </div>';
                                         }
