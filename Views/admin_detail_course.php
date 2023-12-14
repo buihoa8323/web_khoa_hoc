@@ -45,9 +45,8 @@
               <p><strong>ID:</strong><?php echo $course->getCourseId(); ?></p>
               <p><strong>Giáo viên:</strong> <?php echo $course->getTeacherName(); ?></p>
               <p><strong>Lớp:</strong><?php echo $course->getCousesGrade(); ?></p>
-              <p><strong>Mô tả:</strong><?php echo $course->getCourseDes(); ?>
-              </p>
-              <p><strong>Giá:</strong> 1.200.000<sup>đồng</sup>.</p>
+              <p><strong>Mô tả:</strong><?php echo $course->getCourseDes(); ?></p>
+              <p><strong>Giá:</strong> <?php echo $course->getCoursePrice(); ?><sup>đồng</sup>.</p>
             </div>
             <div class="nut">
               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Sửa khóa học</button>
