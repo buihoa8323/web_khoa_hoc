@@ -133,6 +133,9 @@
                                 <div class="productDes ">
 
                                     <?php
+                                    if (is_null($data["lesson_list"])) {
+                                        echo '<p style="text-align: center;"><strong>Chưa có bài học</strong></p>';
+                                    } else {
                                     foreach ($data["lesson_list"] as $lesson) {
                                         if ($lesson instanceof LessonModel) {
                                             echo
@@ -148,6 +151,7 @@
                                             </div>';
                                         }
                                     }
+                                }
                                     ?>
 
                                 </div>
