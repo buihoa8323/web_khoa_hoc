@@ -133,25 +133,25 @@
                                 <div class="productDes ">
 
                                     <?php
-                                    if (is_null($data["lesson_list"])) {
-                                        echo '<p style="text-align: center;"><strong>Chưa có bài học</strong></p>';
-                                    } else {
-                                    foreach ($data["lesson_list"] as $lesson) {
-                                        if ($lesson instanceof LessonModel) {
-                                            echo
-                                            '<div class="course-container" onclick="toggleContent(\'course1'. $lesson->getLessonId() .'\')">
-                                                <h3 class="productDes__title">'. $lesson->getLessonName() .'</h3>
-                                                <div style="display: flex; flex-direction: row">
-                                                    <div>
-                                                        <!-- Embed YouTube video or other video source here -->
-                                                        <iframe width="400" height="250" src="'. $lesson->getLessonVideo() .'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                    if(isset($data["lesson_list"])){
+                                        foreach ($data["lesson_list"] as $lesson) {
+                                            if ($lesson instanceof LessonModel) {
+                                                echo
+                                                '<div class="course-container" onclick="toggleContent(\'course1'. $lesson->getLessonId() .'\')">
+                                                    <h3 class="productDes__title">'. $lesson->getLessonName() .'</h3>
+                                                    <div style="display: flex; flex-direction: row">
+                                                        <div>
+                                                            <!-- Embed YouTube video or other video source here -->
+                                                            <iframe width="400" height="250" src="'. $lesson->getLessonVideo() .'" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                                        </div>
+                                                        <p id="description-course1">&nbsp'. $lesson->getLessonDes() .'</p>
                                                     </div>
-                                                    <p id="description-course1">&nbsp'. $lesson->getLessonDes() .'</p>
-                                                </div>
-                                            </div>';
+                                                </div>';
+                                            }
                                         }
+                                    } else{
+                                        echo '<h1 style="font-size: large;">Khóa học này tạm thời chưa được cập nhập bài học</h1>';
                                     }
-                                }
                                     ?>
 
                                 </div>

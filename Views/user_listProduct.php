@@ -113,10 +113,11 @@ session_start();
 
                         <?php
                         // In your view (user_listProduct.php)
-                        foreach ($data["course_list"] as $course) {
-                            if ($course instanceof CourseModel) {
-                                echo
-                                '<div class="col l-2 m-4 s-6">
+                        if (isset($data["course_list"])) {
+                            foreach ($data["course_list"] as $course) {
+                                if ($course instanceof CourseModel) {
+                                    echo
+                                    '<div class="col l-2 m-4 s-6">
                                                 <div class="product">
                                                     <div class="product__avt" style="background-image: url(' . $course->getCourseImage() . ');">
                                                     </div>
@@ -131,7 +132,10 @@ session_start();
                                                     <a href="/index?controller=courseDetail&course_id=' . $course->getCourseId() . '" class="viewDetail">Xem chi tiết</a>
                                                 </div>
                                             </div>';
+                                }
                             }
+                        } else {
+                            echo '<h1 style="font-size: large; margin-bottom:50px">Không tìm nấy kết quả nào</h1>';
                         }
                         ?>
                     </div>
