@@ -47,7 +47,41 @@
                     </a>
                 </li>
 
-               
+                <!-- <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="chatbubble-outline"></ion-icon>
+                        </span>
+                        <span class="title">Messages</span>
+                    </a>
+                </li> -->
+
+                <!-- <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="help-outline"></ion-icon>
+                        </span>
+                        <span class="title">Help</span>
+                    </a>
+                </li> -->
+
+                <!-- <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="settings-outline"></ion-icon>
+                        </span>
+                        <span class="title">Settings</span>
+                    </a>
+                </li> -->
+
+                <!-- <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                        </span>
+                        <span class="title">Password</span>
+                    </a>
+                </li> -->
 
                 <li>
                     <a href="#" class="signout">
@@ -128,13 +162,18 @@
                                     </div>
                                 </form>
                             </div>
-                            
                             <div class="col-md-3">
                                 <form action="/index.php?controller=adminCourseList" method="post" class="form-group" class="form-group">
                                     <input hidden="true" type="text" name="method" value="grade_filter" class="form-control" id="grade">
                                     <label for="grade">Grade:</label>
                                     <div class="input-group">
-                                        <input type="number" name="grade_filter" class="form-control" id="grade">
+                                        <!-- <input type="number" name="grade_filter" class="form-control" id="grade"> -->
+                                        <select name="grade_filter" class="form-control" id="subject">
+                                            <option value="">-- chọn khối --</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </select>
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-primary">Search</button>
                                         </div>
@@ -262,7 +301,15 @@
                                         <!-- <select id="grade" name="grade">
                                             <option disabled selected>Select grade</option>
                                         </select> -->
-                                        <input type="number" class="form-control" id="c_grade" name="c_grade" required>
+                                        <div class="input-group">
+                                            <!-- <input type="number" name="grade_filter" class="form-control" id="grade"> -->
+                                            <select name="c_grade" class="form-control" id="subject">
+                                                <option value="">-- chọn khối --</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <!-- hết lựa chọn cho grade -->
                                     <div class="form-group">
