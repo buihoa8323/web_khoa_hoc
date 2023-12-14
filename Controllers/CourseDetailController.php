@@ -29,7 +29,7 @@ class CourseDetailController extends BaseController
 
     //getDataOfCourse
     $data["course"] = $this->courseRepository->getCourseById($courseId);
-    $data["lesson_list"] = $this->lessonRepository->getLessonByCourseId($courseId);
+    $data["lesson_list"] = $this->lessonRepository->getLessonByCourseIdAndStatus($courseId, true);
 
     //go to view
     $this->view("user_product", $data);

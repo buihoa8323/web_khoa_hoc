@@ -25,7 +25,7 @@ class AdminCourseDetailController extends BaseController
     $this->doGet($action);
 
     $courseId = $_GET["course_id"];
-    if($course_id != ''){
+    if ($course_id != '') {
       $courseId = $course_id;
     }
 
@@ -48,29 +48,34 @@ class AdminCourseDetailController extends BaseController
         break;
       default:
         return;
-      }
+    }
   }
 
   public function doPost($method)
   {
     switch ($method) {
       case "update_course":
-        $this->update($_POST["c_id"],$_POST["c_name"], $_POST["c_teacher"], $_POST["c_price"],$_POST["c_status"], $_POST["c_desc"],  $_POST["c_subject"], $_POST["c_grade"]);
+        $this->update($_POST["c_id"], $_POST["c_name"], $_POST["c_teacher"], $_POST["c_price"], $_POST["c_status"], $_POST["c_desc"],  $_POST["c_subject"], $_POST["c_grade"]);
         break;
       case "create_lesson":
         $this->createLesson();
+        break;
+      case "update_lesson_status":
+        $this->updateLessonStatus($_POST["course_id"] ,$_POST["lesson_id"], $_POST["lesson_status"]);
         break;
       default:
         return;
     }
   }
 
-  public function delete($lesson_id){
+  public function delete($lesson_id)
+  {
     $this->lessonRepository->delete($lesson_id);
     header('Location: /index.php?controller=adminCourseList');
   }
 
-  public function createLesson(){
+  public function createLesson()
+  {
     $this->lessonRepository->create($_POST["course_id"], $_POST["l_name"], $_POST["l_desc"], $_POST["l_video"]);
     $this->index($_POST["course_id"]);
   }
@@ -78,7 +83,7 @@ class AdminCourseDetailController extends BaseController
   public function update($course_id, $course_name, $teacher_id, $course_price, $course_status, $course_des, $subject_id, $course_grade)
   {
     $status = $course_status == 'on' ? true : false;
-    
+
     // Get the temporary file name of the uploaded file
     $temp_file = $_FILES["c_image"]["tmp_name"];
     // Get the original file name of the uploaded file
@@ -87,13 +92,19 @@ class AdminCourseDetailController extends BaseController
     $destination_file = "./Views/assets/img/product/" . $original_file;
     // Move the uploaded file to the destination folder using the move_uploaded_file function
 
-    if($original_file == ''){
-      $course_image='';
-    } else{
+    if ($original_file == '') {
+      $course_image = '';
+    } else {
       $course_image = $destination_file; //image url to save on db
     }
     $this->courseRepository->update($course_id, $course_name, $teacher_id, $course_price, $status, $course_des, $subject_id, $course_grade, $course_image);
     $this->index($course_id);
+  }
+
+  public function updateLessonStatus($course_id, $lesson_id, $lesson_status){
+    $status = $lesson_status == 'on' ? true : false;
+    $this->lessonRepository->update_status($lesson_id, $status);
+    return $this->index($course_id);
   }
 }
 

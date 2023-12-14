@@ -39,9 +39,11 @@ class LoginController extends BaseController
       // Start the session
       session_start();
       // Save the user id to the session
+      global $a;
+      $a = $user;
       $_SESSION["user"] = $user;
       if ($user->getUserRole() == 0) {
-        require('CourseController.php');
+        require('HomeController.php');
       } else if ($user->getUserRole() == 1) {
         require('AdminController.php');
       }

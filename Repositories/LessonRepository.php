@@ -47,6 +47,43 @@ class LessonRepository
     $this->db->connnection = null;
   }
 
+  public function getLessonByCourseIdAndStatus($course_id, $lesson_status)
+  {
+    // Prepare the SQL statement with parameters for the course_id and lesson_status
+    // Use a join query to get the lessons from the courses_lessons table
+    $sql = "SELECT lessons.* FROM lessons 
+            JOIN courses_lessons ON lessons.lesson_id = courses_lessons.lesson_id
+            WHERE courses_lessons.course_id = :course_id AND lessons.lesson_status = :lesson_status";
+    $stmt = $this->db->connnection->prepare($sql);
+
+    // Bind the course_id and lesson_status parameters to the values passed to the function
+    $stmt->bindParam(':course_id', $course_id, PDO::PARAM_INT);
+    $stmt->bindParam(':lesson_status', $lesson_status, PDO::PARAM_BOOL);
+
+    // Execute the SQL statement
+    $stmt->execute();
+
+    // Check if the result set has more than 0 rows
+    if ($stmt->rowCount() > 0) {
+      // Use a loop to fetch each row from the result set as an associative array
+      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        // Append each row to the lessons array
+        $lessons[] = $row;
+      }
+    } else {
+      // If the result set has 0 rows, print a message
+      echo "0 results";
+    }
+
+    foreach ($lessons as $l) {
+      $lesson_list[] = clone $this->getLessonItemFromQuery($l);
+    }
+
+    //when retrieve lesson from database , save data to a lesson object 
+    return $lesson_list;
+    $this->db->connnection = null;
+  }
+
   public function getLessonById($lesson_id)
   {
     // Prepare the SQL statement with a parameter for the lesson_id
@@ -144,6 +181,32 @@ class LessonRepository
     if ($stmt->rowCount() == 1) {
       // Print a message
       echo "Lesson updated successfully";
+    } else {
+      // Print a message
+      echo "Update failed";
+    }
+
+  }
+
+  public function update_status($lesson_id, $lesson_status)
+  {
+    // Define the SQL statement for updating the status, using the lesson_id as the condition
+    $sql = "UPDATE lessons SET lesson_status = :lesson_status WHERE lesson_id = :lesson_id";
+
+    // Prepare the statement and get the PDOStatement object
+    $stmt = $this->db->connnection->prepare($sql);
+
+    // Bind the parameters and values
+    $stmt->bindParam(':lesson_id', $lesson_id, PDO::PARAM_INT);
+    $stmt->bindParam(':lesson_status', $lesson_status, PDO::PARAM_BOOL);
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Check if the update was successful
+    if ($stmt->rowCount() == 1) {
+      // Print a message
+      echo "Lesson status updated successfully";
     } else {
       // Print a message
       echo "Update failed";

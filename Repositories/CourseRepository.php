@@ -48,6 +48,71 @@ class CourseRepository
     $this->db->connnection = null;
   }
 
+  //get all courses for displaying course to user
+  public function getAllCoursesUser($courseNameFilter, $teacherNameFilter, $subjectFilter, $gradeFilter)
+{
+  $sql = "SELECT courses.*, subjects.subject_name AS subject_name, teachers.teacher_name AS teacher_name FROM courses JOIN subjects ON courses.subject_id = subjects.subject_id JOIN teachers ON courses.teacher_id = teachers.teacher_id 
+  WHERE 
+  (courses.course_name LIKE '%$courseNameFilter%' OR " . ($courseNameFilter == NULL ? 'NULL' : "'" . $courseNameFilter . "'") . " IS NULL) 
+  AND (teachers.teacher_name LIKE '%$teacherNameFilter%' OR " . ($teacherNameFilter == NULL ? 'NULL' : "'" . $teacherNameFilter . "'") . " IS NULL) 
+  AND (subjects.subject_id = '$subjectFilter' OR " . ($subjectFilter == NULL ? 'NULL' : "'" . $subjectFilter . "'") . " IS NULL) 
+  AND (courses.couses_grade = '$gradeFilter' OR " . ($gradeFilter == NULL ? 'NULL' : "'" . $gradeFilter . "'") . " IS NULL)
+  AND (courses.couses_status = true)
+  ORDER BY courses.course_id DESC;";
+
+  $result = $this->db->connnection->query($sql);
+
+  // Check if the result set has more than 0 rows
+  if ($result->rowCount() > 0) {
+    // Use a loop to fetch each row from the result set as an associative array
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+      // Append each row to the courses array
+      $courses[] = $row;
+    }
+  }
+
+  foreach ($courses as $c) {
+    $course_list[] = clone $this->getCourseItemFromQuery($c);
+  }
+
+  //when retrieve course from database , save data to a course object 
+  return $course_list;
+  $this->db->connnection = null;
+}
+
+  //get a number of course
+  public function getNumberOfCourseUser($courseNameFilter, $teacherNameFilter, $subjectFilter, $gradeFilter, $number)
+{
+  $sql = "SELECT courses.*, subjects.subject_name AS subject_name, teachers.teacher_name AS teacher_name FROM courses JOIN subjects ON courses.subject_id = subjects.subject_id JOIN teachers ON courses.teacher_id = teachers.teacher_id 
+  WHERE 
+  (courses.course_name LIKE '%$courseNameFilter%' OR " . ($courseNameFilter == NULL ? 'NULL' : "'" . $courseNameFilter . "'") . " IS NULL) 
+  AND (teachers.teacher_name LIKE '%$teacherNameFilter%' OR " . ($teacherNameFilter == NULL ? 'NULL' : "'" . $teacherNameFilter . "'") . " IS NULL) 
+  AND (subjects.subject_id = '$subjectFilter' OR " . ($subjectFilter == NULL ? 'NULL' : "'" . $subjectFilter . "'") . " IS NULL) 
+  AND (courses.couses_grade = '$gradeFilter' OR " . ($gradeFilter == NULL ? 'NULL' : "'" . $gradeFilter . "'") . " IS NULL)
+  AND (courses.couses_status = true)
+  ORDER BY courses.course_id DESC
+  LIMIT $number;";
+
+  $result = $this->db->connnection->query($sql);
+
+  // Check if the result set has more than 0 rows
+  if ($result->rowCount() > 0) {
+    // Use a loop to fetch each row from the result set as an associative array
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+      // Append each row to the courses array
+      $courses[] = $row;
+    }
+  }
+
+  foreach ($courses as $c) {
+    $course_list[] = clone $this->getCourseItemFromQuery($c);
+  }
+
+  //when retrieve course from database , save data to a course object 
+  return $course_list;
+  $this->db->connnection = null;
+}
+
   public function getCourseById($course_id)
   {
     $sql = "SELECT courses.*, subjects.subject_name AS subject_name, teachers.teacher_name AS teacher_name FROM courses JOIN subjects ON courses.subject_id = subjects.subject_id JOIN teachers ON courses.teacher_id = teachers.teacher_id 
