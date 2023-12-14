@@ -251,6 +251,7 @@
                     <th scope="col">Mô tả bài học</th>
                     <th scope="col">Video bài học</th>
                     <th scope="col">Hành động</th>
+                    <th scope="col">Trạng thái</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -277,8 +278,20 @@
                           <input hidden="true" type="text" name="action" value="delete" class="form-control">
                           <input hidden="true" type="text" name="lesson_id" value="' . $lesson->getLessonId() . '" class="form-control">
                           <button class="btn btn-danger" type="submit" style="height:40px" onclick="return confirm(\'Are you sure you want to delete this lesson?\');">Delete</button>
+                          </form>
                           </td>
-                    </tr>';
+
+                          <td>
+                            <div class="form-check form-switch">
+                              <form action="/index.php?controller=adminCourseDetail" method="POST">
+                                <input hidden="true" type="text" name="lesson_id" value="'.$lesson->getLessonId().'" class="form-control">
+                                <input hidden="true" type="text" name="course_id" value="'.$course->getCourseId().'" class="form-control">
+                                <input hidden="true" type="text" name="method" value="update_lesson_status" class="form-control">
+                                <input class="form-check-input" onchange="this.form.submit()" name="lesson_status" type="checkbox" role="switch" id="flexSwitchCheckChecked" '. ($lesson->getLessonStatus() ? "checked" : "") . ">
+                              </form>
+                            </div>
+                          </td>
+                      </tr>";
                     }
                   }
                   ?>
