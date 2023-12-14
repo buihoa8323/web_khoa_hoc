@@ -17,9 +17,6 @@ class CourseRepository
   //get all courses
   public function getAllCourses($courseNameFilter, $teacherNameFilter, $subjectFilter, $gradeFilter)
   {
-    //$sql = "SELECT courses.*, subjects.subject_name AS subject_name, teachers.teacher_name AS teacher_name FROM courses JOIN subjects ON courses.subject_id = subjects.subject_id JOIN teachers ON courses.teacher_id = teachers.teacher_id;";
-    //$sql = "SELECT courses.*, subjects.subject_name AS subject_name, teachers.teacher_name AS teacher_name FROM courses JOIN subjects ON courses.subject_id = subjects.subject_id JOIN teachers ON courses.teacher_id = teachers.teacher_id WHERE (courses.course_name LIKE '%$courseNameFilter%' OR '$courseNameFilter' IS NULL) AND (teachers.teacher_name LIKE '%$teacherNameFilter%' OR '$teacherNameFilter' IS NULL) AND (subjects.subject_name = '$subjectFilter' OR '$subjectFilter' IS NULL) AND (courses.couses_grade = '$gradeFilter' OR '$gradeFilter' IS NULL);";
-    //$sql = "SELECT courses.*, subjects.subject_name AS subject_name, teachers.teacher_name AS teacher_name FROM courses JOIN subjects ON courses.subject_id = subjects.subject_id JOIN teachers ON courses.teacher_id = teachers.teacher_id WHERE (courses.course_name LIKE '%$courseNameFilter%' OR ". ($courseNameFilter == NULL? 'NULL' : "'".$courseNameFilter."'"). " IS NULL)";
     $sql = "SELECT courses.*, subjects.subject_name AS subject_name, teachers.teacher_name AS teacher_name FROM courses JOIN subjects ON courses.subject_id = subjects.subject_id JOIN teachers ON courses.teacher_id = teachers.teacher_id 
     WHERE 
     (courses.course_name LIKE '%$courseNameFilter%' OR " . ($courseNameFilter == NULL ? 'NULL' : "'" . $courseNameFilter . "'") . " IS NULL) 
