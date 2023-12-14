@@ -38,27 +38,51 @@ class UserRepository
 
   public function create($user_name, $user_pass, $user_dob, $user_address, $user_mail, $user_role)
   {
-    // Define the SQL statement for inserting data, omitting the user_id, created_at and updated_at columns
-    $sql = "INSERT INTO users (user_name, user_pass, user_dob, user_address, user_mail, user_role, created_at, updated_at) 
-  VALUES (:user_name, :user_pass, :user_dob, :user_address, :user_mail, :user_role, :created_at, :updated_at)";
+    // Define the SQL statement for selecting the username
+    $sql = "SELECT user_name FROM users WHERE user_name = :user_name";
 
     // Prepare the statement and get the PDOStatement object
     $stmt = $this->db->connnection->prepare($sql);
-    $date = date('Y-m-d');
 
-    // Bind the parameters and values
+    // Bind the parameter and value
     $stmt->bindParam(':user_name', $user_name, PDO::PARAM_STR);
-    $stmt->bindParam(':user_pass', $user_pass, PDO::PARAM_STR);
-    $stmt->bindParam(':user_dob', $user_dob, PDO::PARAM_STR);
-    $stmt->bindParam(':user_address', $user_address, PDO::PARAM_STR);
-    $stmt->bindParam(':user_mail', $user_mail, PDO::PARAM_STR);
-    $stmt->bindParam(':user_role', $user_role, PDO::PARAM_STR);
-    $stmt->bindParam(':created_at', $date, PDO::PARAM_STR);
-    $stmt->bindParam(':updated_at', $date, PDO::PARAM_STR);
 
     // Execute the statement
     $stmt->execute();
-    // $this->db->connnection = null;
+
+    // Fetch the result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Check if the username exists
+    if ($result) {
+      // Return the message
+      return 401;
+    } else {
+      // Define the SQL statement for inserting data, omitting the user_id, created_at and updated_at columns
+      $sql = "INSERT INTO users (user_name, user_pass, user_dob, user_address, user_mail, user_role, created_at, updated_at) 
+  VALUES (:user_name, :user_pass, :user_dob, :user_address, :user_mail, :user_role, :created_at, :updated_at)";
+
+      // Prepare the statement and get the PDOStatement object
+      $stmt = $this->db->connnection->prepare($sql);
+      $date = date('Y-m-d');
+
+      // Bind the parameters and values
+      $stmt->bindParam(':user_name', $user_name, PDO::PARAM_STR);
+      $stmt->bindParam(':user_pass', $user_pass, PDO::PARAM_STR);
+      $stmt->bindParam(':user_dob', $user_dob, PDO::PARAM_STR);
+      $stmt->bindParam(':user_address', $user_address, PDO::PARAM_STR);
+      $stmt->bindParam(':user_mail', $user_mail, PDO::PARAM_STR);
+      $stmt->bindParam(':user_role', $user_role, PDO::PARAM_STR);
+      $stmt->bindParam(':created_at', $date, PDO::PARAM_STR);
+      $stmt->bindParam(':updated_at', $date, PDO::PARAM_STR);
+
+      // Execute the statement
+      $stmt->execute();
+      // $this->db->connnection = null;
+
+      // Return a success message
+      return 200;
+    }
   }
 
   //turn user from query record to a user model
