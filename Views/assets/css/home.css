@@ -1,6 +1,6 @@
 /* =====Css lại header cho trang home====== */
 
-.header.scrolling {
+/* .header.scrolling {
     background-color: transparent;
 }
 
@@ -30,7 +30,7 @@
 .header.scrolling .name-user,
 .header.scrolling .header__cart i {
     color: var(--white-cl-1);
-}
+} */
 
 
 /* ===========Slider======= */
