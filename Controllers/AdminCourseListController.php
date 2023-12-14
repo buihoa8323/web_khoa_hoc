@@ -34,6 +34,11 @@ class AdminController extends BaseController
     //get data of subject
     $data["subject_list"] = $this->subjectRepository->getAllSubject();
 
+    $data["course_filter"] = $_POST["course_filter"];
+    $data["teacher_filter"] = $_POST["teacher_filter"];
+    $data["subject_filter"] = $_POST["subject_filter"];
+    $data["grade_filter"] = $_POST["grade_filter"];
+
     //go to view, pass data to view
     $this->view("admin_courselist", $data);
   }
@@ -53,6 +58,9 @@ class AdminController extends BaseController
   public function doPost($method)
   {
     switch ($method) {
+      case "filter":
+        $this->filter();
+        break;
       case "course_name_filter":
         $this->filter($_POST["course_filter"], $this->teacherNameFilter, $this->subjectFilter, $this->gradeFilter);
         break;
@@ -98,12 +106,12 @@ class AdminController extends BaseController
     return $this->index();
   }
 
-  public function filter($courseNameFilter, $teacherNameFilter, $subjectFilter, $gradeFilter)
+  public function filter()
   {
-    $this->courseNameFilter = $courseNameFilter;
-    $this->teacherNameFilter = $teacherNameFilter;
-    $this->subjectFilter = $subjectFilter;
-    $this->gradeFilter = $gradeFilter;
+    $this->courseNameFilter =  $_POST["course_filter"];
+    $this->teacherNameFilter =  $_POST["teacher_filter"];
+    $this->subjectFilter = $_POST["subject_filter"];
+    $this->gradeFilter = $_POST["grade_filter"];
     return $this->index();
   }
 
