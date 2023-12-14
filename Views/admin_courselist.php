@@ -82,14 +82,16 @@
                         <span class="title">Password</span>
                     </a>
                 </li> -->
-
                 <li>
-                    <a href="#" class="signout">
-                        <span class="icon">
-                            <ion-icon name="log-out-outline"></ion-icon>
-                        </span>
-                        <span class="title">Sign Out</span>
-                    </a>
+                    <form action='/index.php?controller=login' method='post' id='viewFormLogout'>
+                        <input hidden='true' type='text' name='method' value='logout' class='form-control'>
+                        <a href="" onclick="document.getElementById('viewFormLogout').submit(); return false" class="signout">
+                            <span class="icon">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                            </span>
+                            <span class="title">Sign Out</span>
+                        </a>
+                    </form>
                 </li>
             </ul>
         </div>
@@ -116,34 +118,37 @@
 
                     <!-- filter box -->
                     <div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <form action="/index.php?controller=adminCourseList" method="post" class="form-group">
-                                    <input hidden="true" type="text" name="method" value="course_name_filter" class="form-control" id="course-name">
+
+                        <form action="/index.php?controller=adminCourseList" method="post" class="form-group">
+                            <input hidden="true" type="text" name="method" value="filter" class="form-control" id="course-name">
+
+                            <div class="row">
+
+                                <div class="col-md-3">
+
                                     <label for="course-name">Course Name:</label>
                                     <div class="input-group">
-                                        <input type="text" name="course_filter" class="form-control" id="course-name">
+                                        <input type="text" name="course_filter" value="<?php echo $data["course_filter"] ?>" class="form-control" id="course-name">
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-primary">Search</button>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
-                            <div class="col-md-3">
-                                <form action="/index.php?controller=adminCourseList" method="post" class="form-group">
-                                    <input hidden="true" type="text" name="method" value="teacher_name_filter" class="form-control" id="course-name">
+
+                                </div>
+                                <div class="col-md-3">
+
                                     <label for="teacher-name">Teacher Name:</label>
                                     <div class="input-group">
-                                        <input type="text" name="teacher_filter" class="form-control" id="teacher-name">
+                                        <input type="text" name="teacher_filter" value="<?php echo $data["teacher_filter"] ?>" class="form-control" id="teacher-name">
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-primary">Search</button>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
-                            <div class="col-md-3">
-                                <form action="/index.php?controller=adminCourseList" method="post" class="form-group" class="form-group">
-                                    <input hidden="true" type="text" name="method" value="subject_filter" class="form-control" id="course-name">
+
+                                </div>
+                                <div class="col-md-3">
+
+
                                     <label for="subject">Subject:</label>
                                     <div class="input-group">
                                         <select name="subject_filter" class="form-control" id="subject">
@@ -151,7 +156,7 @@
                                             <?php
                                             foreach ($data["subject_list"] as $subject) {
                                                 if ($subject instanceof SubjectModel) { //use this line so that can use method of the SubjectModel conviniently
-                                                    echo '<option value="' . $subject->getSubjectId() . '"> ' . $subject->getSubjectName() . '</option>';
+                                                    echo '<option ' . ($subject->getSubjectId() == $data["subject_filter"] ? 'selected' : '') . ' value="' . $subject->getSubjectId() . '"> ' . $subject->getSubjectName() . '</option>';
                                                 }
                                             }
                                             ?>
@@ -160,49 +165,52 @@
                                             <button type="submit" class="btn btn-primary">Search</button>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
-                            <div class="col-md-3">
-                                <form action="/index.php?controller=adminCourseList" method="post" class="form-group" class="form-group">
+
+                                </div>
+                                <div class="col-md-3">
+
                                     <input hidden="true" type="text" name="method" value="grade_filter" class="form-control" id="grade">
                                     <label for="grade">Grade:</label>
                                     <div class="input-group">
                                         <!-- <input type="number" name="grade_filter" class="form-control" id="grade"> -->
                                         <select name="grade_filter" class="form-control" id="subject">
                                             <option value="">-- chọn khối --</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
+                                            <option <?php echo '<option ' . (10 == $data["grade_filter"] ? 'selected' : '') ?> value="10">10</option>
+                                            <option <?php echo '<option ' . (11 == $data["grade_filter"] ? 'selected' : '') ?> value="11">11</option>
+                                            <option <?php echo '<option ' . (12 == $data["grade_filter"] ? 'selected' : '') ?> value="12">12</option>
                                         </select>
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-primary">Search</button>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
 
-                    <br>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th class="text-center">ID</th>
-                                <th class="text-center">Course Image</th>
-                                <th class="text-center">Course Name</th>
-                                <th class="text-center">Teacher Name</th>
-                                <th class="text-center">Course Description</th>
-                                <th class="text-center">Subject</th>
-                                <th class="text-center">Grade</th>
-                                <th class="text-center" colspan="2">Action</th>
-                            </tr>
-                        </thead>
-                        <?php
-                        // In your view (user_listProduct.php)
-                        foreach ($data["course_list"] as $course) {
-                            if ($course instanceof CourseModel) {
-                                echo
-                                "<tr>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <br>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">Course Image</th>
+                            <th class="text-center">Course Name</th>
+                            <th class="text-center">Teacher Name</th>
+                            <th class="text-center">Course Description</th>
+                            <th class="text-center">Subject</th>
+                            <th class="text-center">Grade</th>
+                            <th class="text-center" colspan="2">Action</th>
+                        </tr>
+                    </thead>
+                    <?php
+                    // In your view (user_listProduct.php)
+                    foreach ($data["course_list"] as $course) {
+                        if ($course instanceof CourseModel) {
+                            echo
+                            "<tr>
                                     <td>" . $course->getCourseId() . "</td>
                                     <td>
                                         <form action='/index.php?' method='get' id='viewForm" . $course->getCourseId() . "'>
@@ -242,100 +250,100 @@
                                         </div>
                                     </td>
                                 </tr>";
-                            }
                         }
-                        ?>
-                    </table>
-                </div>
+                    }
+                    ?>
+                </table>
+            </div>
 
 
-                <!-- Add course -->
-                <div class="movalAdd">
+            <!-- Add course -->
+            <div class="movalAdd">
+                <!-- Modal content-->
+                <div class="modal" id="myModal">
                     <!-- Modal content-->
-                    <div class="modal" id="myModal">
-                        <!-- Modal content-->
-                        <div class="modal-content">
+                    <div class="modal-content">
 
-                            <div class="modal-header">
-                                <h4 class="modal-title">Thêm khóa học mới</h4>
-                                <span class="close">&times;</span> <!-- &times;biểu thị ký tự "×" -->
-                            </div>
+                        <div class="modal-header">
+                            <h4 class="modal-title">Thêm khóa học mới</h4>
+                            <span class="close">&times;</span> <!-- &times;biểu thị ký tự "×" -->
+                        </div>
 
-                            <div class="modal-body">
-                                <form action="/index.php?controller=adminCourseList" method="POST" enctype="multipart/form-data">
-                                    <input hidden="true" type="text" name="method" value="create_new_course" class="form-control" id="grade">
-                                    <div class="form-group">
-                                        <label for="name">Tên khóa học:</label>
-                                        <input type="text" class="form-control" id="c_name" name="c_name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="price">Mã giáo viên:</label>
-                                        <input type="number" class="form-control" id="c_teacher" name="c_teacher" required>
-                                        <!-- required Nếu giá trị không được nhập vào, trình duyệt sẽ hiển thị một thông báo lỗi và không cho phép form được gửi đi -->
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="price">Mức giá:</label>
-                                        <input type="number" class="form-control" id="c_price" name="c_price" required>
-                                        <!-- required Nếu giá trị không được nhập vào, trình duyệt sẽ hiển thị một thông báo lỗi và không cho phép form được gửi đi -->
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="qty">Mô tả:</label>
-                                        <input type="text" class="form-control" id="c_desc" name="c_desc" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Bộ môn:</label>
-                                        <select class="form-control" id="subject" name="c_subject">
-                                            <option value="">-- chọn bộ môn --</option>
-                                            <?php
-                                            foreach ($data["subject_list"] as $subject) {
-                                                if ($subject instanceof SubjectModel) { //use this line so that can use method of the SubjectModel conviniently
-                                                    echo '<option value="' . $subject->getSubjectId() . '"> ' . $subject->getSubjectName() . '</option>';
-                                                }
+                        <div class="modal-body">
+                            <form action="/index.php?controller=adminCourseList" method="POST" enctype="multipart/form-data">
+                                <input hidden="true" type="text" name="method" value="create_new_course" class="form-control" id="grade">
+                                <div class="form-group">
+                                    <label for="name">Tên khóa học:</label>
+                                    <input type="text" class="form-control" id="c_name" name="c_name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="price">Mã giáo viên:</label>
+                                    <input type="number" class="form-control" id="c_teacher" name="c_teacher" required>
+                                    <!-- required Nếu giá trị không được nhập vào, trình duyệt sẽ hiển thị một thông báo lỗi và không cho phép form được gửi đi -->
+                                </div>
+                                <div class="form-group">
+                                    <label for="price">Mức giá:</label>
+                                    <input type="number" class="form-control" id="c_price" name="c_price" required>
+                                    <!-- required Nếu giá trị không được nhập vào, trình duyệt sẽ hiển thị một thông báo lỗi và không cho phép form được gửi đi -->
+                                </div>
+                                <div class="form-group">
+                                    <label for="qty">Mô tả:</label>
+                                    <input type="text" class="form-control" id="c_desc" name="c_desc" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Bộ môn:</label>
+                                    <select class="form-control" id="subject" name="c_subject">
+                                        <option value="">-- chọn bộ môn --</option>
+                                        <?php
+                                        foreach ($data["subject_list"] as $subject) {
+                                            if ($subject instanceof SubjectModel) { //use this line so that can use method of the SubjectModel conviniently
+                                                echo '<option value="' . $subject->getSubjectId() . '"> ' . $subject->getSubjectName() . '</option>';
                                             }
-                                            ?>
-                                        </select>
-                                    </div>
-                                    <!-- hết lựa chọn cho subject -->
-                                    <div class="form-group">
-                                        <label>Khối:</label>
-                                        <!-- <select id="grade" name="grade">
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <!-- hết lựa chọn cho subject -->
+                                <div class="form-group">
+                                    <label>Khối:</label>
+                                    <!-- <select id="grade" name="grade">
                                             <option disabled selected>Select grade</option>
                                         </select> -->
-                                        <div class="input-group">
-                                            <!-- <input type="number" name="grade_filter" class="form-control" id="grade"> -->
-                                            <select name="c_grade" class="form-control" id="subject">
-                                                <option value="">-- chọn khối --</option>
-                                                <option value="10">10</option>
-                                                <option value="11">11</option>
-                                                <option value="12">12</option>
-                                            </select>
-                                        </div>
+                                    <div class="input-group">
+                                        <!-- <input type="number" name="grade_filter" class="form-control" id="grade"> -->
+                                        <select name="c_grade" class="form-control" id="subject">
+                                            <option value="">-- chọn khối --</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                        </select>
                                     </div>
-                                    <!-- hết lựa chọn cho grade -->
-                                    <div class="form-group">
-                                        <label for="file">Chọn ảnh:</label>
-                                        <input type="file" class="form-control-file" id="c_image" name="c_image">
-                                        <!-- <input type="text" class="form-control" id="c_image" name="c_image" required> -->
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-primary" id="upload" value="upload" name="upload" style="height:40px">Add Course</button>
-                                    </div>
-                                </form>
-
-                            </div>
-
-                            <div class="modal-footer">
-                                <button id="close" type="button" class="btn btn-primary" data-dismiss="modal" style="height:40px">Close</button>
-                            </div>
+                                </div>
+                                <!-- hết lựa chọn cho grade -->
+                                <div class="form-group">
+                                    <label for="file">Chọn ảnh:</label>
+                                    <input type="file" class="form-control-file" id="c_image" name="c_image">
+                                    <!-- <input type="text" class="form-control" id="c_image" name="c_image" required> -->
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary" id="upload" value="upload" name="upload" style="height:40px">Add Course</button>
+                                </div>
+                            </form>
 
                         </div>
 
-                        <!-- het Modal content-->
+                        <div class="modal-footer">
+                            <button id="close" type="button" class="btn btn-primary" data-dismiss="modal" style="height:40px">Close</button>
+                        </div>
 
-                    </div> <!-- Modal content-->
-                </div>
+                    </div>
+
+                    <!-- het Modal content-->
+
+                </div> <!-- Modal content-->
             </div>
         </div>
+    </div>
     </div>
     </div>
     <!-- =========== Scripts =========  -->
