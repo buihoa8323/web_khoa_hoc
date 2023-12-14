@@ -29,9 +29,15 @@ class RegisterController extends BaseController
   }
 
   public function register($username, $password, $birthday, $address, $gmail){
-    $this->userRepository->create($username, $password, $birthday, $address, $gmail, 0);
+    $result = $this->userRepository->create($username, $password, $birthday, $address, $gmail, 0);
+    if($result==401){
+      $data["message"] = "The account has already been taken! Please choose another username";
+      $this->view("register", $data);
+    }
     //return to login
-    $this->view("login");
+    if($result==200){
+      $this->view("login");
+    }
   }
 }
 
