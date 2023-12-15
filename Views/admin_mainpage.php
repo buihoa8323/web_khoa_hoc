@@ -79,12 +79,15 @@
                 </li> -->
 
                 <li>
-                    <a href="#" class="signout">
-                        <span class="icon">
-                            <ion-icon name="log-out-outline"></ion-icon>
-                        </span>
-                        <span class="title">Sign Out</span>
-                    </a>
+                    <form action='/index.php?controller=login' method='post' id='viewFormLogout'>
+                        <input hidden='true' type='text' name='method' value='logout' class='form-control'>
+                        <a href="" onclick="document.getElementById('viewFormLogout').submit(); return false" class="signout">
+                            <span class="icon">
+                                <ion-icon name="log-out-outline"></ion-icon>
+                            </span>
+                            <span class="title">Sign Out</span>
+                        </a>
+                    </form>
                 </li>
             </ul>
         </div>
