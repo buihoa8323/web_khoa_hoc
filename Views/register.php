@@ -60,8 +60,14 @@
                                         <input type="text" id="form1Example13" name="username" class="form-control form-control-md" required />
                                         <label class="form-label" for="form1Example13">Username</label>
                                     </div>
-
-
+                                    <?php 
+                                    if(isset($data["message"])){
+                                        echo '<div>
+                                                <p style="color: red;"> '.$data["message"] .'</p>
+                                            </div>';
+                                    }
+                                    ?>
+                                    
                                     <!-- Password input -->
                                     <div class="form-outline mb-4">
                                         <input type="password" id="form1Example23" name="password" class="form-control form-control-md" required />
