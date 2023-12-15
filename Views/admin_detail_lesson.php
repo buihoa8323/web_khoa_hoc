@@ -60,66 +60,24 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group mt-3">
-                                                            <label for="name">Tên bài học: </label>
-                                                            <input type="text" class="form-control" value="<?php echo $lesson->getLessonName(); ?>" id="l_name" name="l_name" required>
-                                                        </div>
-                                                        <div class='form-check form-switch mt-3'>
-                                                            <label for="name">Trạng thái</label>
-                                                            <input class='form-check-input' name="l_status" type='checkbox' role='switch' id='flexSwitchCheckChecked' <?php echo $lesson->getLessonStatus() ? ' checked' : ''; ?>>
-                                                        </div>
-                                                        
-                                                        <!-- hết lựa chọn cho grade -->
-                                                        <div class="form-group mt-3">
-                                                            <label for="name">Video(embed link)</label>
-                                                            <iframe width="560" height="315" src="<?php echo $lesson->getLessonVideo(); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                                            <input type="text" class="form-control" value="<?php echo $lesson->getLessonVideo(); ?>" id="l_video" name="l_video">
-                                                            <!-- <input type="text" class="form-control" id="c_image" name="c_image" required> -->
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="qty">Mô tả:</label>
-                                                            <!-- Include stylesheet -->
-                                                            <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-
-                                                            <!-- Create the editor container -->
-                                                            <div id="editor" style="height: 500px;">
-                                                                <p>Hello World!</p>
-                                                                <p>Some initial <strong>bold</strong> text</p>
-                                                                <p><br></p>
-                                                            </div>
-                                                            <input type="text" class="form-control" value="<?php echo $lesson->getLessonDes(); ?>" id="l_desc" name="l_desc">
-
-                                                            <!-- Include the Quill library -->
-                                                            <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-
-                                                            <!-- Initialize Quill editor -->
-                                                            <script>
-                                                                var input = document.querySelector("c_desc");
-                                                                var input = document.querySelector("#text-content");
-
-                                                                function quillPutValue() {
-                                                                    input.value = quill.getText();
-                                                                };
-
-                                                                const quill = new Quill("#editor", {
-                                                                    modules: {
-                                                                        toolbar: {
-                                                                            container: [
-                                                                                ["bold", "italic", "underline", "strike", "color"],
-                                                                                ["link", "image", "video"],
-                                                                            ]
-                                                                        },
-                                                                    },
-                                                                    theme: "snow",
-                                                                });
-                                                            </script>
-                                                            <!-- <input type="text" class="form-control" id="c_desc" name="c_desc" required> -->
-                                                        </div>
-                                                    </div>
+                                                <div class="form-group mt-3">
+                                                    <label for="name">Tên bài học: </label>
+                                                    <input type="text" class="form-control" value="<?php echo $lesson->getLessonName(); ?>" id="l_name" name="l_name" required>
+                                                </div>
+                                                <div class='form-check form-switch mt-3'>
+                                                    <label for="name">Trạng thái</label>
+                                                    <input class='form-check-input' name="l_status" type='checkbox' role='switch' id='flexSwitchCheckChecked' <?php echo $lesson->getLessonStatus() ? ' checked' : ''; ?>>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="qty">Mô tả:</label>
+                                                    <input type="text" class="form-control" value="<?php echo $lesson->getLessonDes(); ?>" id="l_desc" name="l_desc">
+                                                </div>
+                                                <!-- hết lựa chọn cho grade -->
+                                                <div class="form-group mt-3">
+                                                    <label for="name">Video(embed link)</label>
+                                                    <iframe width="560" height="315" src="<?php echo $lesson->getLessonVideo(); ?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                                    <input type="text" class="form-control" value="<?php echo $lesson->getLessonVideo(); ?>" id="l_video" name="l_video">
+                                                    <!-- <input type="text" class="form-control" id="c_image" name="c_image" required> -->
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
