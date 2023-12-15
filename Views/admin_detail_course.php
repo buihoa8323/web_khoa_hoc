@@ -45,109 +45,69 @@
               <p><strong>ID:</strong><?php echo $course->getCourseId(); ?></p>
               <p><strong>Giáo viên:</strong> <?php echo $course->getTeacherName(); ?></p>
               <p><strong>Lớp:</strong><?php echo $course->getCousesGrade(); ?></p>
-              <p><strong>Mô tả:</strong><?php echo $course->getCourseDes(); ?></p>
-              <p><strong>Giá:</strong> <?php echo $course->getCoursePrice(); ?><sup>đồng</sup>.</p>
+              <p><strong>Bộ môn:</strong><?php echo $course->getSubjectName(); ?>
+              <p><strong>Mô tả:</strong><?php echo $course->getCourseDes(); ?>
+              </p>
+              <p><strong>Giá: </strong><?php echo $course->getCoursePrice(); ?><sup>đồng</sup>.</p>
             </div>
             <div class="nut">
               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Sửa khóa học</button>
               <!-- Modal -->
-              <div class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal fade modal-md" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <form action="/index.php?controller=adminCourseDetail" method="POST" enctype="multipart/form-data">
                       <input hidden="true" type="text" name="method" value="update_course" class="form-control" id="method">
                       <input hidden="true" type="text" name="c_id" value="<?php echo $course->getCourseId(); ?>" class="form-control" id="grade">
                       <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Sửa khóa học</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <div class="modal-body">
-                        <div class="row">
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label for="name">Tên khóa học:</label>
-                              <input type="text" class="form-control" value="<?php echo $course->getCourseName(); ?>" id="c_name" name="c_name">
-                            </div>
-                            <div class='form-check form-switch'>
-                              <label for="name">Trạng thái</label>
-                              <input class='form-check-input' name="c_status" type='checkbox' role='switch' id='flexSwitchCheckChecked' <?php echo $course->getCousesStatus() ? ' checked' : ''; ?>>
-                            </div>
-                            <div class="form-group">
-                              <label for="price">Mã giáo viên:</label>
-                              <input type="number" class="form-control" value="<?php echo $course->getTeacherId(); ?>" id="c_teacher" name="c_teacher" required>
-                              <!-- required Nếu giá trị không được nhập vào, trình duyệt sẽ hiển thị một thông báo lỗi và không cho phép form được gửi đi -->
-                            </div>
-                            <div class="form-group">
-                              <label for="price">Mức giá:</label>
-                              <input type="number" class="form-control" value="<?php echo $course->getCoursePrice(); ?>" id="c_price" name="c_price" required>
-                              <!-- required Nếu giá trị không được nhập vào, trình duyệt sẽ hiển thị một thông báo lỗi và không cho phép form được gửi đi -->
-                            </div>
-                            <div class="form-group">
-                              <label>Bộ môn:</label>
-                              <select class="form-control" id="subject" name="c_subject">
-                                <?php
-                                foreach ($data["subject_list"] as $subject) {
-                                  if ($subject instanceof SubjectModel) {
-                                    echo '<option value="' . $subject->getSubjectId() . '" ' . ($subject->getSubjectId() == $course->getSubjectId() ? 'selected' : '') . '> ' . $subject->getSubjectName() . '</option>';
-                                  }
-                                }
-                                ?>
-                              </select>
-                            </div>
-                            <!-- hết lựa chọn cho subject -->
-                            <div class="form-group">
-                              <label>Khối:</label>
-                              <input type="number" value="<?php echo $course->getCousesGrade(); ?>" class="form-control" id="c_grade" name="c_grade" required>
-                            </div>
-                            <!-- hết lựa chọn cho grade -->
-                            <div class="form-group">
-                              <img style="max-height: 400px;" src="<?php echo $course->getCourseImage(); ?>">
-                              <input type="file" class="form-control-file" id="c_image" name="c_image">
-                              <!-- <input type="text" class="form-control" id="c_image" name="c_image" required> -->
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-group">
-                              <label for="qty">Mô tả:</label>
-                              <!-- Include stylesheet -->
-                              <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-
-                              <!-- Create the editor container -->
-                              <div id="editor" style="height: 500px;">
-                                <p>Hello World!</p>
-                                <p>Some initial <strong>bold</strong> text</p>
-                                <p><br></p>
-                              </div>
-                              <input type="text" class="form-control" value="<?php echo $course->getCourseDes(); ?>" id="c_desc" name="c_desc">
-
-
-                              <!-- Include the Quill library -->
-                              <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-
-                              <!-- Initialize Quill editor -->
-                              <script>
-                                var input = document.querySelector("c_desc");
-                                var input = document.querySelector("#text-content");
-
-                                function quillPutValue() {
-                                  input.value = quill.getText();
-                                };
-
-                                const quill = new Quill("#editor", {
-                                  modules: {
-                                    toolbar: {
-                                      container: [
-                                        ["bold", "italic", "underline", "strike", "color"],
-                                        ["link", "image", "video"],
-                                      ]
-                                    },
-                                  },
-                                  theme: "snow",
-                                });
-                              </script>
-                              <!-- <input type="text" class="form-control" id="c_desc" name="c_desc" required> -->
-                            </div>
-                          </div>
+                        <div class="form-group">
+                          <label for="name">Tên khóa học:</label>
+                          <input type="text" class="form-control" value="<?php echo $course->getCourseName(); ?>" id="c_name" name="c_name">
+                        </div>
+                        <div class='form-check form-switch'>
+                          <label for="name">Trạng thái</label>
+                          <input class='form-check-input' name="c_status" type='checkbox' role='switch' id='flexSwitchCheckChecked' <?php echo $course->getCousesStatus() ? ' checked' : ''; ?>>
+                        </div>
+                        <div class="form-group">
+                          <label for="price">Mã giáo viên:</label>
+                          <input type="number" class="form-control" value="<?php echo $course->getTeacherId(); ?>" id="c_teacher" name="c_teacher" required>
+                          <!-- required Nếu giá trị không được nhập vào, trình duyệt sẽ hiển thị một thông báo lỗi và không cho phép form được gửi đi -->
+                        </div>
+                        <div class="form-group">
+                          <label for="price">Mức giá:</label>
+                          <input type="number" class="form-control" value="<?php echo $course->getCoursePrice(); ?>" id="c_price" name="c_price" required>
+                          <!-- required Nếu giá trị không được nhập vào, trình duyệt sẽ hiển thị một thông báo lỗi và không cho phép form được gửi đi -->
+                        </div>
+                        <div class="form-group">
+                          <label for="qty">Mô tả:</label>
+                          <input type="text" class="form-control" value="<?php echo $course->getCourseDes(); ?>" id="c_desc" name="c_desc" required>
+                        </div>
+                        <div class="form-group">
+                          <label>Bộ môn:</label>
+                          <select class="form-control" id="subject" name="c_subject">
+                            <?php
+                            foreach ($data["subject_list"] as $subject) {
+                              if ($subject instanceof SubjectModel) {
+                                echo '<option value="' . $subject->getSubjectId() . '" ' . ($subject->getSubjectId() == $course->getSubjectId() ? 'selected' : '') . '> ' . $subject->getSubjectName() . '</option>';
+                              }
+                            }
+                            ?>
+                          </select>
+                        </div>
+                        <!-- hết lựa chọn cho subject -->
+                        <div class="form-group">
+                          <label>Khối:</label>
+                          <input type="number" value="<?php echo $course->getCousesGrade(); ?>" class="form-control" id="c_grade" name="c_grade" required>
+                        </div>
+                        <!-- hết lựa chọn cho grade -->
+                        <div class="form-group">
+                          <img style="max-height: 400px;" src="<?php echo $course->getCourseImage(); ?>">
+                          <input type="file" class="form-control-file" id="c_image" name="c_image">
+                          <!-- <input type="text" class="form-control" id="c_image" name="c_image" required> -->
                         </div>
                       </div>
                       <div class="modal-footer">
@@ -164,59 +124,32 @@
         <div class="mucgiua">
           <h3>NỘI DUNG KHÓA HỌC</h3>
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">Thêm bài học</button>
-          <div class="modal fade modal-xl" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade modal-md" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <form action="/index.php?controller=adminCourseDetail" method="POST" enctype="multipart/form-data">
                   <input hidden="true" type="text" name="method" value="create_lesson" class="form-control" id="method">
                   <input hidden="true" type="text" name="course_id" value="<?php echo $course->getCourseId() ?>" class="form-control" id="grade">
                   <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Sửa bài học</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm bài học</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group mt-3">
-                          <label for="name">Tên bài học: </label>
-                          <input type="text" class="form-control" id="l_name" name="l_name">
-                        </div>
+                    <div class="form-group mt-3">
+                      <label for="name">Tên bài học: </label>
+                      <input type="text" class="form-control" id="l_name" name="l_name">
+                    </div>
 
-                        <!-- hết lựa chọn cho grade -->
-                        <div class="form-group mt-3">
-                          <label for="name">Video(embed link)</label>
-                          <input type="text" class="form-control" id="l_video" name="l_video">
-                          <!-- <input type="text" class="form-control" id="c_image" name="c_image" required> -->
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="qty">Mô tả:</label>
-                          <!-- Create the editor container -->
-                          <div id="editor2" style="height: 500px;">
-                            <p>Hello World!</p>
-                            <p>Some initial <strong>bold</strong> text</p>
-                            <p><br></p>
-                          </div>
-                          <input type="text" class="form-control" id="l_desc" name="l_desc">
+                    <!-- hết lựa chọn cho grade -->
+                    <div class="form-group mt-3">
+                      <label for="name">Video(embed link)</label>
+                      <input type="text" class="form-control" id="l_video" name="l_video">
+                      <!-- <input type="text" class="form-control" id="c_image" name="c_image" required> -->
+                    </div>
 
-                          <!-- Initialize Quill editor -->
-                          <script>
-                            const quill2 = new Quill("#editor2", {
-                              modules: {
-                                toolbar: {
-                                  container: [
-                                    ["bold", "italic", "underline", "strike", "color"],
-                                    ["link", "image", "video"],
-                                  ]
-                                },
-                              },
-                              theme: "snow",
-                            });
-                          </script>
-                          <!-- <input type="text" class="form-control" id="c_desc" name="c_desc" required> -->
-                        </div>
-                      </div>
+                    <div class="form-group mt-3">
+                      <label for="name">Mô tả: </label>
+                      <input type="text" class="form-control" id="l_desc" name="l_desc">
                     </div>
                   </div>
                   <div class="modal-footer">
@@ -255,10 +188,11 @@
                 </thead>
                 <tbody>
                   <?php
-                  foreach ($data["lesson_list"] as $lesson) {
-                    if ($lesson instanceof LessonModel) {
-                      echo
-                      '<tr>
+                  if (isset($data["lesson_list"])) {
+                    foreach ($data["lesson_list"] as $lesson) {
+                      if ($lesson instanceof LessonModel) {
+                        echo
+                        '<tr>
                         <td>1</td>  
                         <td><h3 class="productDes__title">' . $lesson->getLessonName() . '</h3></td>
                         <td>
@@ -283,15 +217,18 @@
                           <td>
                             <div class="form-check form-switch">
                               <form action="/index.php?controller=adminCourseDetail" method="POST">
-                                <input hidden="true" type="text" name="lesson_id" value="'.$lesson->getLessonId().'" class="form-control">
-                                <input hidden="true" type="text" name="course_id" value="'.$course->getCourseId().'" class="form-control">
+                                <input hidden="true" type="text" name="lesson_id" value="' . $lesson->getLessonId() . '" class="form-control">
+                                <input hidden="true" type="text" name="course_id" value="' . $course->getCourseId() . '" class="form-control">
                                 <input hidden="true" type="text" name="method" value="update_lesson_status" class="form-control">
-                                <input class="form-check-input" onchange="this.form.submit()" name="lesson_status" type="checkbox" role="switch" id="flexSwitchCheckChecked" '. ($lesson->getLessonStatus() ? "checked" : "") . ">
+                                <input class="form-check-input" onchange="this.form.submit()" name="lesson_status" type="checkbox" role="switch" id="flexSwitchCheckChecked" ' . ($lesson->getLessonStatus() ? "checked" : "") . ">
                               </form>
                             </div>
                           </td>
                       </tr>";
+                      }
                     }
+                  } else {
+                    echo '<h1 style="font-size: large;">Không tìm nấy kết quả nào</h1>';
                   }
                   ?>
                 </tbody>
